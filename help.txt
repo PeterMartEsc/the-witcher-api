@@ -1,0 +1,5 @@
+- Crear ejemplo: POST /api/v1/add/example/
+- Leer ejemplo: GET /api/v1/example/{id}
+- Leer todos los ejemplo: GET /api/v1/example/
+- Actualizar ejemplo: PUT /api/v1/update/example/{id}
+- Eliminar ejemplo: DELETE /api/v1/delete/example/{id}
