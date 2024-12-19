@@ -6,9 +6,9 @@ import es.ies.puerto.petermartesc.springboot.model.Character;
 import java.util.List;
 
 public interface ICharacterService {
-    List<Character> getAllCharacter();
+    List<Character> getAllCharacters();
     Character getCharacterById(int characterId) throws ResourceNotFoundException;
     Character createCharacter(Character character);
-    Character updateCharacter(int characterId, Character characterDetails)       throws ResourceNotFoundException;
+    Character updateCharacter(int characterId, Character characterDetails) throws ResourceNotFoundException;
     void deleteCharacter(int CharacterId) throws ResourceNotFoundException;
 }

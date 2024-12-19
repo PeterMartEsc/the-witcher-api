@@ -28,9 +28,15 @@ public class Application {
 		// Cambiar "serial" por "auto_increment" para H2
 		String sqlStatements[] = {
 				"drop table if exists users",
-				"create table users(id int auto_increment, name varchar(255), primary key (id))",
-				"insert into users(name) values('Manuel')",
-				"insert into users(name) values('Pedro')"
+				"drop table if exists characters",
+				"create table users(id int auto_increment, name varchar(50), primary key (id))",
+				"create table characters(id int auto_increment, name varchar(50), " +
+						"surname varchar(100), description varchar(250), primary key (id))",
+				"insert into users(name) values ('Manuel'), ('Pedro')",
+				"insert into characters(name, surname, description) values " +
+						"('Geralt', 'of Rivia', 'A witcher known for his skills with a sword')," +
+						"('Ciri', 'of Cintra', 'A princess with extraordinary powers')"
+
 		};
 
 		Arrays.asList(sqlStatements).stream().forEach(sql -> {

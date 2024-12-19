@@ -2,7 +2,7 @@ package es.ies.puerto.petermartesc.springboot.service;
 
 import es.ies.puerto.petermartesc.springboot.exception.ResourceNotFoundException;
 import es.ies.puerto.petermartesc.springboot.model.Character;
-import es.ies.puerto.petermartesc.springboot.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import es.ies.puerto.petermartesc.springboot.repository.CharacterRepository;
 import es.ies.puerto.petermartesc.springboot.service.interfaces.ICharacterService;
 import jakarta.validation.Valid;
@@ -15,13 +15,13 @@ public class CharacterService implements ICharacterService {
 
     private CharacterRepository characterRepository;
 
-    //@Autowired
+    @Autowired
     public void setCharacterRepository(CharacterRepository characterRepository) {
         this.characterRepository = characterRepository;
     }
 
     @Override
-    public List<Character> getAllCharacter() {
+    public List<Character> getAllCharacters() {
         return characterRepository.findAll();
     }
 
