@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import es.ies.puerto.petermartesc.springboot.repository.CharacterRepository;
 import es.ies.puerto.petermartesc.springboot.service.interfaces.ICharacterService;
 import jakarta.validation.Valid;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
+@Component
 public class CharacterService implements ICharacterService {
 
     private CharacterRepository characterRepository;

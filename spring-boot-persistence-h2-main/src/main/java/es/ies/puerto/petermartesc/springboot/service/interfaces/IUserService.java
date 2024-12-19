@@ -1,8 +1,9 @@
 package es.ies.puerto.petermartesc.springboot.service.interfaces;
 
-import java.util.List;
 import es.ies.puerto.petermartesc.springboot.exception.ResourceNotFoundException;
 import es.ies.puerto.petermartesc.springboot.model.User;
+
+import java.util.List;
 
 public interface IUserService {
     List<User> getAllUsers();

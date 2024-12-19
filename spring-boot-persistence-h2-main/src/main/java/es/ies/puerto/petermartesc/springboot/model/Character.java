@@ -12,6 +12,9 @@ public class Character {
     private String surname;
     private String description;
 
+    public Character() {
+    }
+
     public Character(int id, String name, String surname, String description) {
         this.id = id;
         this.name = name;

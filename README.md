@@ -77,5 +77,21 @@ Para arrancar el codigo, hay que ejecutar:
 
 - URL: http://localhost:8080/h2-console/
 
-- `Username`: sa
-- `Password`: password 
+- `Username`: root
+- `Password`: 1q2w3e4r
+
+Dentro, para visualizar las tablas especificas creadas, se tendrán que ejecutar las sentencias sql especificas.
+
+Para mostrar las tablas creadas al lanzar la api:
+
+```sql
+    USE the_witcher_api;
+    SHOW tables;
+```
+
+Para mostrar el contenido de una tabla específica:
+
+```sql
+    SELECT * FROM <nombre-tabla>;
+```
+

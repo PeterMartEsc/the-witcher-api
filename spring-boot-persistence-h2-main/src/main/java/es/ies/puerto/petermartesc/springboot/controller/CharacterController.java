@@ -2,12 +2,14 @@ package es.ies.puerto.petermartesc.springboot.controller;
 
 import es.ies.puerto.petermartesc.springboot.exception.ResourceNotFoundException;
 import es.ies.puerto.petermartesc.springboot.model.Character;
-import es.ies.puerto.petermartesc.springboot.service.interfaces.ICharacterService;
 
+
+import es.ies.puerto.petermartesc.springboot.service.interfaces.ICharacterService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,11 +18,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/v1/characters/")
+@RequestMapping("/api/v1/characters")
 public class CharacterController {
-    ICharacterService characterService;
+    private ICharacterService characterService;
 
-    public void setUserRepository(ICharacterService characterService) {
+    @Autowired
+    public void setCharacterRepository(ICharacterService characterService) {
         this.characterService = characterService;
     }
 

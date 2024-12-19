@@ -56,7 +56,7 @@ public class UsersController {
             @ApiResponse(responseCode = "200", description = "User created successfully"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
-    @PostMapping("/add/")
+    @PostMapping("/add")
     public User createUser(@Valid @RequestBody User user) {
         return userService.createUser(user);
     }
