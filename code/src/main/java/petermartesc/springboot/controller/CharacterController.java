@@ -36,11 +36,11 @@ public class CharacterController {
     @Operation(summary = "Get character by ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "404", description = "User not found")
+            @ApiResponse(responseCode = "404", description = "Character not found")
     })
 
     @GetMapping("/{id}")
-    public ResponseEntity<Character> getCHaracterById(@PathVariable(value = "id") int characterId) throws ResourceNotFoundException {
+    public ResponseEntity<Character> getCharacterById(@PathVariable(value = "id") int characterId) throws ResourceNotFoundException {
         Character character = characterService.getCharacterById(characterId);
         return ResponseEntity.ok().body(character);
     }
@@ -57,8 +57,8 @@ public class CharacterController {
 
     @Operation(summary = "Update character")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "character updated successfully"),
-            @ApiResponse(responseCode = "404", description = "character not found")
+            @ApiResponse(responseCode = "200", description = "Character updated successfully"),
+            @ApiResponse(responseCode = "404", description = "Character not found")
     })
     @PutMapping("/update/{id}")
     public ResponseEntity<Character> updateCharacter(@PathVariable(value = "id") int characterId,

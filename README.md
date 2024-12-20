@@ -19,43 +19,43 @@ El objetivo es permitir la creación, lectura, actualización y eliminación de 
 
     - Personajes:
 
-        - Crear personaje: POST /api/v1/add/character/
-        - Leer personaje: GET /api/v1/character/{id}
+        - Crear personaje: POST /api/v1/characters/add/
+        - Leer personaje: GET /api/v1/characters/{id}
         - Leer todos los personaje: GET /api/v1/characters/
-        - Actualizar personaje: PUT /api/v1/update/character/{id}
-        - Eliminar personaje: DELETE /api/v1/delete/character/{id}
+        - Actualizar personaje: PUT /api/v1/characters/update/{id}
+        - Eliminar personaje: DELETE /api/v1/characters/delete/{id}
 
     - Monstruos:
 
-        - Crear monstruo: POST /api/v1/add/monster/
-        - Leer monstruo: GET /api/v1/monster/{id}
+        - Crear monstruo: POST /api/v1/add/monsters/
+        - Leer monstruo: GET /api/v1/monsters/{id}
         - Leer todos los monstruo: GET /api/v1/monsters/
-        - Actualizar monstruo: PUT /api/v1/update/monster/{id}
-        - Eliminar monstruo: DELETE /api/v1/delete/monster/{id}
+        - Actualizar monstruo: PUT /api/v1/monsters/update/{id}
+        - Eliminar monstruo: DELETE /api/v1/monsters/delete/{id}
 
     - Alquimia:
 
-        - Crear alquimia: POST /api/v1/add/alchemy/
-        - Leer alquimia: GET /api/v1/alchemy/{id}
-        - Leer toda la alquimia: GET /api/v1/alchemy/
-        - Actualizar alquimia: PUT /api/v1/update/alchemy/{id}
-        - Eliminar alquimia: DELETE /api/v1/delete/alchemy/{id}
+        - Crear alquimia: POST /api/v1/add/alchemys/
+        - Leer alquimia: GET /api/v1/alchemys/{id}
+        - Leer toda la alquimia: GET /api/v1/alchemys/
+        - Actualizar alquimia: PUT /api/v1/alchemys/update/{id}
+        - Eliminar alquimia: DELETE /api/v1/alchemys/delete/{id}
 
     - Armas:
 
-        - Crear arma: POST /api/v1/add/weapon/
-        - Leer arma: GET /api/v1/weapon/{id}
+        - Crear arma: POST /api/v1/add/weapons/
+        - Leer arma: GET /api/v1/weapons/{id}
         - Leer todas las arma: GET /api/v1/weapons/
-        - Actualizar arma: PUT /api/v1/update/weapon/{id}
-        - Eliminar arma: DELETE /api/v1/delete/weapon/{id}
+        - Actualizar arma: PUT /api/v1/weapons/update/{id}
+        - Eliminar arma: DELETE /api/v1/weapons/delete/{id}
 
     - Ubicaciones:
 
-        - Crear ubicacion: POST /api/v1/add/location/
-        - Leer ubicacion: GET /api/v1/location/{id}
+        - Crear ubicacion: POST /api/v1/add/locations/
+        - Leer ubicacion: GET /api/v1/locations/{id}
         - Leer todas las ubicaciones: GET /api/v1/locations/
-        - Actualizar ubicacion: PUT /api/v1/update/location/{id}
-        - Eliminar ubicacion: DELETE /api/v1/delete/location/{id}
+        - Actualizar ubicacion: PUT /api/v1/locations/update/{id}
+        - Eliminar ubicacion: DELETE /api/v1/locations/delete/{id}
 
 
 La aplicación usará la gestión de excepciones mediante la clase `ResourceNotFoundException` para manejar casos donde un elemento no es encontrado. Además, la API está documentada con Swagger para facilitar la interacción.
@@ -69,7 +69,7 @@ Para arrancar el codigo, hay que ejecutar:
 > Recordar lanzar el comando en el [directorio específico](./spring-boot-persistence-h2-main/) el proyecto
 
 
-## Para conectarse y comprobar el servicio RESTfull
+## Para conectarse y comprobar el servicio RESTfull con Swagger
 
 - URL: http://localhost:8080/swagger-ui/index.html
 
@@ -78,7 +78,7 @@ Para arrancar el codigo, hay que ejecutar:
 - URL: http://localhost:8080/h2-console/
 
 - `Username`: root
-- `Password`: 1q2w3e4r
+- `Password`: 
 
 Dentro, para visualizar las tablas especificas creadas, se tendrán que ejecutar las sentencias sql especificas.
 

@@ -30,18 +30,38 @@ public class Application {
 						"DROP TABLE IF EXISTS users;",
 						"DROP TABLE IF EXISTS roles;",
 						"DROP TABLE IF EXISTS characters;",
+						"DROP TABLE IF EXISTS monsters;",
+						"DROP TABLE IF EXISTS weapons;",
+						"DROP TABLE IF EXISTS alchemys;",
+						"DROP TABLE IF EXISTS locations;",
+
 
 						"CREATE TABLE roles (id INT AUTO_INCREMENT, role VARCHAR(20), PRIMARY KEY (id));",
 						"CREATE TABLE users (id INT AUTO_INCREMENT, name VARCHAR(50), role_id INT, PRIMARY KEY (id), " +
 								"FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE SET NULL ); ",
 						"CREATE TABLE characters ( id INT AUTO_INCREMENT,name VARCHAR(50),surname VARCHAR(100), " +
 								"description VARCHAR(250), PRIMARY KEY (id) );" ,
+						"CREATE TABLE monsters (id INT AUTO_INCREMENT, name VARCHAR(50), " +
+								"difficulty VARCHAR(25), PRIMARY KEY (id));",
+						"CREATE TABLE weapons (id INT AUTO_INCREMENT, name VARCHAR(30), " +
+								"rarity VARCHAR(10), PRIMARY KEY (id));",
+						"CREATE TABLE alchemys (id INT AUTO_INCREMENT, name VARCHAR(20), " +
+								"material VARCHAR(20), PRIMARY KEY (id));",
+						"CREATE TABLE locations (id INT AUTO_INCREMENT, name VARCHAR(20), " +
+								"kingdom VARCHAR(20), PRIMARY KEY (id));",
+
 
 						"INSERT INTO roles (role) VALUES ('Admin'), ('User');",
 						"INSERT INTO users (name, role_id) VALUES ('Manuel', 2), ('Pedro', 1);",
 						"INSERT INTO characters (name, surname, description) VALUES " +
 						"('Geralt', 'of Rivia', 'A witcher known for his skills with a sword')," +
-						"('Ciri', 'of Cintra', 'A princess with extraordinary powers');"
+						"('Ciri', 'of Cintra', 'A princess with extraordinary powers');",
+						"INSERT INTO monsters (name, difficulty) VALUES " +
+								"('Drowned', 'easy'), ('Kikimora', 'mid'), ('Queen Kikimora', 'impossible');",
+						"INSERT INTO weapons (name, rarity) VALUES " +
+								"('Silver Sword', 'uncommon'), ('Witchers Iron Sword', 'uncommon');",
+						"INSERT INTO alchemys (name, material) VALUES ('Alp Fangs', 'Eter'), ('Cadaverine', 'Rebis');",
+						"INSERT INTO locations (name, kingdom) VALUES ('Wyzima', 'Temeria'), ('Blaviken', 'Redania');",
 
 		};
 

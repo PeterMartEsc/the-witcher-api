@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import jakarta.validation.Valid;
 import petermartesc.springboot.exception.ResourceNotFoundException;
+import petermartesc.springboot.model.Role;
 import petermartesc.springboot.model.User;
+import petermartesc.springboot.repository.RoleRepository;
 import petermartesc.springboot.repository.UserRepository;
 import petermartesc.springboot.service.interfaces.IUserService;
 
@@ -19,10 +21,16 @@ import petermartesc.springboot.service.interfaces.IUserService;
 public class UserService implements IUserService {
 
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @Autowired
+    public void setRoleRepository(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
     }
 
     public List<User> getAllUsers() {
@@ -35,6 +43,18 @@ public class UserService implements IUserService {
     }
 
     public User createUser(@Valid @RequestBody User user) {
+        int idRole = user.getIdrole().getId();
+        List<Role> roles = roleRepository.findAll();
+
+        for (Role role : roles) {
+            if(role.getId() == idRole){
+                user.setIdrole(role);
+                break;
+            } else {
+                user.setIdrole(null);
+            }
+        }
+
         return userRepository.save(user);
     }
 
@@ -43,6 +63,7 @@ public class UserService implements IUserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
         user.setName(userDetails.getName());
+        user.setIdrole(userDetails.getIdrole());
         return userRepository.save(user);
     }
 
