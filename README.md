@@ -2,7 +2,9 @@
 
 __Autor:__ _Pedro Martín Escuela_
 
-Este repositorio implementa una API RESTfull usando Java y Spring-Boot, siguiendo el [proyecto subido por el profesor](./monstruo).
+Este repositorio implementa una API RESTfull usando Java y Spring-Boot, siguiendo el [proyecto subido por el profesor](). Las tablas con la iformación toman como base contenido del videojuego The Witcher.
+
+<img src="https://assets.nintendo.com/image/upload/q_auto/f_auto/ncom/software/switch/70010000033071/3f7ee6aa3482b514bd443e116022b038a9728f017916ed37da3f09f731a7d5f2"/>
 
 El objetivo es permitir la creación, lectura, actualización y eliminación de registros de:
 
