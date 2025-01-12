@@ -10,12 +10,12 @@ La aplicación está realizada con Spring Boot como framework, que usa Spring Da
 
 ## Índice:
 
-- API RESTfull -
+- API RESTfull
     - [Introducción](#introducción)
     - [Intrucciones para el funcionamiento](#instrucciones-para-el-funcionamiento)
     - [Endpoints](#endpoints)
 
-- API SOAP -
+- API SOAP
     - [Introducción API SOAP](#introducción-api-soap)
     - [Enlaces de acceso](#enlaces-de-acceso)
 
