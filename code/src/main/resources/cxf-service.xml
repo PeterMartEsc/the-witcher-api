@@ -8,11 +8,11 @@
 
     <!-- Definición del servicio -->
     <jaxws:endpoint id="userServiceEndpoint"
-                    implementor="#userServiceImpl"
+                    implementor="#userServiceSoap"
                     address="/users">
     </jaxws:endpoint>
 
     <!-- Bean del servicio implementado -->
-    <bean id="userServiceImpl" class="petermartesc.springboot.soap.service.UserServiceSoapImpl"/>
+    <bean id="userServiceSoap" class="petermartesc.springboot.soap.service.UserServiceSoap"/>
 
 </beans>
