@@ -1,4 +1,4 @@
-package petermartesc.springboot.service;
+package petermartesc.springboot.service.rest;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Location;
 import petermartesc.springboot.repository.LocationRepository;
-import petermartesc.springboot.service.interfaces.ILocationService;
+import petermartesc.springboot.service.rest.interfaces.ILocationService;
 
 import java.util.List;
 

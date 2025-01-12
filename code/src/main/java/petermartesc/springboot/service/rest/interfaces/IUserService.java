@@ -1,4 +1,4 @@
-package petermartesc.springboot.service.interfaces;
+package petermartesc.springboot.service.rest.interfaces;
 
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.User;

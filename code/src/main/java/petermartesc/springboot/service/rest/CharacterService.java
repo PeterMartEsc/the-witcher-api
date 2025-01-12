@@ -1,10 +1,10 @@
-package petermartesc.springboot.service;
+package petermartesc.springboot.service.rest;
 
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Character;
 import org.springframework.beans.factory.annotation.Autowired;
 import petermartesc.springboot.repository.CharacterRepository;
-import petermartesc.springboot.service.interfaces.ICharacterService;
+import petermartesc.springboot.service.rest.interfaces.ICharacterService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -13,6 +13,60 @@
     </jaxws:endpoint>
 
     <!-- Bean del servicio implementado -->
-    <bean id="userServiceSoap" class="petermartesc.springboot.soap.service.UserServiceSoap"/>
+    <bean id="userServiceSoap" class="petermartesc.springboot.service.soap.UserServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="roleServiceEndpoint"
+                    implementor="#roleServiceSoap"
+                    address="/roles">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="roleServiceSoap" class="petermartesc.springboot.service.soap.RoleServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="alchemyServiceEndpoint"
+                    implementor="#alchemyServiceSoap"
+                    address="/alchemys">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="alchemyServiceSoap" class="petermartesc.springboot.service.soap.AlchemyServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="characterServiceEndpoint"
+                    implementor="#characterServiceSoap"
+                    address="/characters">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="characterServiceSoap" class="petermartesc.springboot.service.soap.CharacterServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="locationServiceEndpoint"
+                    implementor="#locationServiceSoap"
+                    address="/locations">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="locationServiceSoap" class="petermartesc.springboot.service.soap.LocationServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="monsterServiceEndpoint"
+                    implementor="#monsterServiceSoap"
+                    address="/monsters">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="monsterServiceSoap" class="petermartesc.springboot.service.soap.MonsterServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="weaponServiceEndpoint"
+                    implementor="#weaponServiceSoap"
+                    address="/weapons">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="weaponServiceSoap" class="petermartesc.springboot.service.soap.WeaponServiceSoap"/>
 
 </beans>

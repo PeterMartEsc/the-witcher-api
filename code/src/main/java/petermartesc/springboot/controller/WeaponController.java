@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Weapon;
-import petermartesc.springboot.service.interfaces.IWeaponService;
+import petermartesc.springboot.service.rest.interfaces.IWeaponService;
 
 import java.util.HashMap;
 import java.util.List;
