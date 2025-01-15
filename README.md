@@ -8,8 +8,6 @@ Este repositorio implementa una API RESTfull usando Java y Spring-Boot, siguiend
 
 <img src="https://assets.nintendo.com/image/upload/q_auto/f_auto/ncom/software/switch/70010000033071/3f7ee6aa3482b514bd443e116022b038a9728f017916ed37da3f09f731a7d5f2"/>
 
-La aplicación está realizada con Spring Boot como framework, que usa Spring Data JPA para gestionar la concurrencia de la BBDD. La base de datos es en MySQL, aun que la mayoría de sus tablas son no relacionales. Además, gestionará las excepciones mediante la clase `ResourceNotFoundException` para manejar casos donde un elemento no es encontrado. La API está documentada con Swagger para facilitar la interacción.
-
 ## Índice:
 
 - API RESTfull
@@ -20,6 +18,7 @@ La aplicación está realizada con Spring Boot como framework, que usa Spring Da
 - API SOAP
     - [Introducción API SOAP](#introducción-api-soap)
     - [Enlaces de acceso](#enlaces-de-acceso)
+    - [Endpoints](#endpoints-específicos-soap)
 
 ## Introducción
 
@@ -47,6 +46,8 @@ Para arrancar el codigo, hay que ejecutar:
 - `Username`: root
 - `Password`: 
 
+> Hay que usar las credenciales establecidas en el properties y usadas en la propia BBDD en la que trabaja la __api__
+
 Dentro, para visualizar las tablas especificas creadas, se tendrán que ejecutar las sentencias sql especificas.
 
 Para mostrar las tablas creadas al lanzar la api:
@@ -62,7 +63,7 @@ Para mostrar el contenido de una tabla específica:
     SELECT * FROM <nombre-tabla>;
 ```
 
-## Endpoints
+## Endpoints API RESTFull
 
 El objetivo de la aplicación es permitir la creación, lectura, actualización y eliminación de registros de:
 
@@ -119,12 +120,32 @@ El objetivo de la aplicación es permitir la creación, lectura, actualización 
 
 ## Introducción API SOAP
 
-Aparte de lo mencionado anteriormente, también hemos implementado unos servicios SOAP para familiarizarnos con este tipo de servicios. Las clases están ubicadas en la subcarpeta [soap](./code/src/main/java/petermartesc.springboot/service) de la carpeta service. Para realizarlo, hemos añadido las dependencias de cfx-springboot-starter-jaxws para facilitar la configuración e implementación de servicios SOAP en sprong-boot y la de jakarta xml bind api que permite pasar (serializar) objetos de java a xml, lo cual es crucial para los servicios SOAP, que usan unicamente XML.
+Aparte de lo mencionado anteriormente, también hemos implementado unos servicios SOAP para familiarizarnos con este tipo de servicios. Las clases están ubicadas en la subcarpeta [soap](./code/src/main/java/petermartesc.springboot/service) de la carpeta service. 
+
+Para realizarlo, hemos añadido las dependencias de cfx-springboot-starter-jaxws para facilitar la configuración e implementación de servicios SOAP en spring-boot y la de jakarta xml bind api que permite pasar (serializar) objetos de java a xml, lo cual es crucial para los servicios SOAP, que usan unicamente XML.
 
 ## Enlaces de acceso
 
-Para acceder a la lista de servicios con sus respectivos métodos, acceder a siguiente `http://localhost:8080/services`
+Para acceder a la lista de servicios con sus respectivos métodos, acceder a la __URL__: http://localhost:8080/services
 
-Para acceder a cada servicio expesifico, basta con clikar en el enlace de cada apartado, pero la sintaxis estandar es http://localhost:8080/services + /recurso?wsdl
+Para acceder a cada servicio expecífico, basta con hacer click en el enlace de cada apartado, pero la sintaxis estandar es http://localhost:8080/services + /recurso?wsdl
+
+
+## Endpoints específicos SOAP 
+
+- __Alchemy WSDL URL__: http://localhost:8080/services/alchemys?wsdl
+
+- __Character WSDL URL__: http://localhost:8080/services/characters?wsdl
+
+- __Location WSDL URL__: http://localhost:8080/services/locations?wsdl
+
+- __Monster WSDL URL__: http://localhost:8080/services/monsters?wsdl
+
+- __Role WSDL URL__: http://localhost:8080/services/roles?wsdl
+
+- __User WSDL URL__: http://localhost:8080/services/users?wsdl
+
+- __Weapons WSDL URL__: http://localhost:8080/services/weapons?wsdl
+
 
 </div>
