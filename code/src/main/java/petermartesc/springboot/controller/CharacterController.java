@@ -4,7 +4,7 @@ import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Character;
 
 
-import petermartesc.springboot.service.interfaces.ICharacterService;
+import petermartesc.springboot.service.rest.interfaces.ICharacterService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

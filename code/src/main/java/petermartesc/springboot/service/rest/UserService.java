@@ -1,4 +1,4 @@
-package petermartesc.springboot.service;
+package petermartesc.springboot.service.rest;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import petermartesc.springboot.model.Role;
 import petermartesc.springboot.model.User;
 import petermartesc.springboot.repository.RoleRepository;
 import petermartesc.springboot.repository.UserRepository;
-import petermartesc.springboot.service.interfaces.IUserService;
+import petermartesc.springboot.service.rest.interfaces.IUserService;
 
 @Component
 public class UserService implements IUserService {

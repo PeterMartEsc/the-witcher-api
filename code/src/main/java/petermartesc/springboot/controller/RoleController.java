@@ -3,7 +3,7 @@ package petermartesc.springboot.controller;
 import petermartesc.springboot.exception.ResourceNotFoundException;
 
 import petermartesc.springboot.model.Role;
-import petermartesc.springboot.service.interfaces.IRoleService;
+import petermartesc.springboot.service.rest.interfaces.IRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -50,7 +50,7 @@ public class RoleController {
     })
     @PostMapping("/add")
     public Role createRole(@Valid @RequestBody Role role) {
-        return roleService.createUser(role);
+        return roleService.createRole(role);
     }
 
     @Operation(summary = "Update role")

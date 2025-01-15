@@ -4,13 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>es.system.jpexposito</groupId>
-	<artifactId>spring-boot-persistence-h2</artifactId>
-	<version>0.0.1</version>
+	<groupId>petermartesc.springboot</groupId>
+	<artifactId>spring-boot-persistence-mysql</artifactId>
+	<version>0.0.2</version>
 	<packaging>jar</packaging>
 
-	<name>spring-boot-persistence-h2 crud</name>
-	<description>CRUD Service RestApi H2 DataBase</description>
+	<name>spring-boot-persistence-MySQL crud</name>
+	<description>CRUD Service RestApi MySQL DataBase</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -69,6 +69,16 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>6.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+			<version>4.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
 		</dependency>
 
 		<dependency>

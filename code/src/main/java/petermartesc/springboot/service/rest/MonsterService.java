@@ -1,4 +1,4 @@
-package petermartesc.springboot.service;
+package petermartesc.springboot.service.rest;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Monster;
 import petermartesc.springboot.repository.MonsterRepository;
-import petermartesc.springboot.service.interfaces.IMonsterService;
+import petermartesc.springboot.service.rest.interfaces.IMonsterService;
 
 import java.util.List;
 

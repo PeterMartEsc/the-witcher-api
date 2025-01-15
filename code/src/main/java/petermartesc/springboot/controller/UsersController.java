@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import petermartesc.springboot.model.User;
-import petermartesc.springboot.service.interfaces.IUserService;
+import petermartesc.springboot.service.rest.interfaces.IUserService;
 import jakarta.validation.Valid;
 
 import petermartesc.springboot.exception.ResourceNotFoundException;

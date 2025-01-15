@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Monster {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name = "name", nullable = false)

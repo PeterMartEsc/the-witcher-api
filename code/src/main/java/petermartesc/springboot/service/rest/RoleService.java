@@ -1,9 +1,9 @@
-package petermartesc.springboot.service;
+package petermartesc.springboot.service.rest;
 
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Role;
 import petermartesc.springboot.repository.RoleRepository;
-import petermartesc.springboot.service.interfaces.IRoleService;
+import petermartesc.springboot.service.rest.interfaces.IRoleService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,7 +33,7 @@ public class RoleService implements IRoleService {
     }
 
     @Override
-    public Role createUser(@Valid @RequestBody Role role) {
+    public Role createRole(@Valid @RequestBody Role role) {
         return roleRepository.save(role);
     }
 

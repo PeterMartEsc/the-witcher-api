@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Location;
-import petermartesc.springboot.service.interfaces.ILocationService;
+import petermartesc.springboot.service.rest.interfaces.ILocationService;
 
 import java.util.HashMap;
 import java.util.List;

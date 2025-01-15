@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+           http://cxf.apache.org/jaxws https://cxf.apache.org/schemas/jaxws.xsd">
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="userServiceEndpoint"
+                    implementor="#userServiceSoap"
+                    address="/users">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="userServiceSoap" class="petermartesc.springboot.service.soap.UserServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="roleServiceEndpoint"
+                    implementor="#roleServiceSoap"
+                    address="/roles">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="roleServiceSoap" class="petermartesc.springboot.service.soap.RoleServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="alchemyServiceEndpoint"
+                    implementor="#alchemyServiceSoap"
+                    address="/alchemys">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="alchemyServiceSoap" class="petermartesc.springboot.service.soap.AlchemyServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="characterServiceEndpoint"
+                    implementor="#characterServiceSoap"
+                    address="/characters">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="characterServiceSoap" class="petermartesc.springboot.service.soap.CharacterServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="locationServiceEndpoint"
+                    implementor="#locationServiceSoap"
+                    address="/locations">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="locationServiceSoap" class="petermartesc.springboot.service.soap.LocationServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="monsterServiceEndpoint"
+                    implementor="#monsterServiceSoap"
+                    address="/monsters">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="monsterServiceSoap" class="petermartesc.springboot.service.soap.MonsterServiceSoap"/>
+
+    <!-- Definición del servicio -->
+    <jaxws:endpoint id="weaponServiceEndpoint"
+                    implementor="#weaponServiceSoap"
+                    address="/weapons">
+    </jaxws:endpoint>
+
+    <!-- Bean del servicio implementado -->
+    <bean id="weaponServiceSoap" class="petermartesc.springboot.service.soap.WeaponServiceSoap"/>
+
+</beans>

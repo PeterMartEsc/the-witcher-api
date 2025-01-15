@@ -6,10 +6,15 @@ import java.util.Objects;
 @Entity
 @Table(name = "characters")
 public class Character {
-
+    @Id
     private int id;
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "surname", nullable = false)
     private String surname;
+
+    @Column(name = "description", nullable = false)
     private String description;
 
     public Character() {

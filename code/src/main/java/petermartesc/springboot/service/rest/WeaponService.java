@@ -1,4 +1,4 @@
-package petermartesc.springboot.service;
+package petermartesc.springboot.service.rest;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Weapon;
 import petermartesc.springboot.repository.WeaponRepository;
-import petermartesc.springboot.service.interfaces.IWeaponService;
+import petermartesc.springboot.service.rest.interfaces.IWeaponService;
 
 import java.util.List;
 
