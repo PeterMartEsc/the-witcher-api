@@ -1,0 +1,41 @@
+version: '3.3'
+services:
+
+  mysql:
+    image: mysql
+    container_name: witcher-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1q2w3e4r
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 1q2w3e4r
+    networks:
+      - witcher-network
+    ports:
+      - "3306:3306"
+    volumes:
+      - witcher-data:/var/lib/mysql
+
+  tomcat:
+    image: tomcat:10.1.9-jdk17
+    container_name: witcher-tomcat
+    networks:
+      - witcher-network
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./sample.war:/usr/local/tomcat/webapps/sample.war
+
+  cloudbeaver:
+    image: dbeaver/cloudbeaver:23.3.0
+    container_name: witcher-cloudbeaver
+    networks:
+      - witcher-network
+    ports:
+      - "8978:8978"
+
+volumes:
+  t8-volumen:
+
+networks:
+  witcher-network:
+    driver: bridge
