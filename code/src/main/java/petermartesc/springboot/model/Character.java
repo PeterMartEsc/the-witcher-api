@@ -27,7 +27,7 @@ public class Character {
         this.description = description;
     }
 
-    @Id
+
     //@GeneratedValue(strategy = GenerationType.AUTO)
     public int getId() {
         return id;
@@ -37,7 +37,6 @@ public class Character {
         this.id = id;
     }
 
-    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
