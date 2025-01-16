@@ -7,7 +7,7 @@
 	<groupId>petermartesc.springboot</groupId>
 	<artifactId>spring-boot-persistence-mysql</artifactId>
 	<version>0.0.2</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>spring-boot-persistence-MySQL crud</name>
 	<description>CRUD Service RestApi MySQL DataBase</description>
@@ -90,6 +90,9 @@
 	</dependencies>
 
 	<build>
+		<finalName>
+			witcher
+		</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

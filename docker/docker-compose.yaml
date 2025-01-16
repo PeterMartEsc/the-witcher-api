@@ -2,10 +2,14 @@ version: '3.3'
 services:
 
   mysql:
-    image: mysql
+    image: mysql:8.0
     container_name: witcher-mysql
+    # build:
+      # context: .
+      # dockerfile: Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: 1q2w3e4r
+      MYSQL_DATABASE: the_witcher_api
       MYSQL_USER: admin
       MYSQL_PASSWORD: 1q2w3e4r
     networks:
@@ -14,27 +18,22 @@ services:
       - "3306:3306"
     volumes:
       - witcher-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   tomcat:
     image: tomcat:10.1.9-jdk17
     container_name: witcher-tomcat
+    depends_on:
+      - mysql
+    ports:
+      - "8081:8080"
     networks:
       - witcher-network
-    ports:
-      - "8081:8081"
     volumes:
-      - ./sample.war:/usr/local/tomcat/webapps/sample.war
-
-  cloudbeaver:
-    image: dbeaver/cloudbeaver:23.3.0
-    container_name: witcher-cloudbeaver
-    networks:
-      - witcher-network
-    ports:
-      - "8978:8978"
+      - ../code/target:/usr/local/tomcat/webapps/ # Archivo WAR correctamente mapeado
 
 volumes:
-  t8-volumen:
+  witcher-data:
 
 networks:
   witcher-network:

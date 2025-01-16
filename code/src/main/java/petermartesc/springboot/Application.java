@@ -29,6 +29,9 @@ public class Application {
 
 		// Cambiar "serial" por "auto_increment" para H2
 		String sqlStatements[] = {
+						//"DROP DATABASE the_witcher_api",
+						//"CREATE DATABASE the_witcher_api;",
+						//"USE the_witcher_api",
 						"DROP TABLE IF EXISTS users;",
 						"DROP TABLE IF EXISTS roles;",
 						"DROP TABLE IF EXISTS characters;",
