@@ -21,12 +21,12 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   tomcat:
-    image: tomcat:10.1.9-jdk17
+    image: tomcat:latest
     container_name: witcher-tomcat
     depends_on:
       - mysql
     ports:
-      - "8081:8080"
+      - "8082:8080"
     networks:
       - witcher-network
     volumes:
@@ -37,4 +37,3 @@ volumes:
 
 networks:
   witcher-network:
-    driver: bridge
