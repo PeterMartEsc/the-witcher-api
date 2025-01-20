@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.3' # 3.9
 services:
 
   mysql:
@@ -30,7 +30,7 @@ services:
     networks:
       - witcher-network
     volumes:
-      - ../code/target:/usr/local/tomcat/webapps/ # Archivo WAR correctamente mapeado
+      - ../code/target/:/usr/local/tomcat/webapps/ # Archivo WAR correctamente mapeado
 
 volumes:
   witcher-data:
