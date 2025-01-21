@@ -22,9 +22,9 @@ public class User {
 	public User() {	
 	}
 	
-	public User(String name, Role idRole) {
+	public User(String name, Role role) {
 		this.name = name;
-		this.role = idRole;
+		this.role = role;
 	}
 	
 

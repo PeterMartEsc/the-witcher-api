@@ -4,9 +4,6 @@ services:
   mysql:
     image: mysql:8.0
     container_name: witcher-mysql
-    # build:
-      # context: .
-      # dockerfile: Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: 1q2w3e4r
       MYSQL_DATABASE: the_witcher_api
@@ -30,7 +27,7 @@ services:
     networks:
       - witcher-network
     volumes:
-      - ../code/target/:/usr/local/tomcat/webapps/ # Archivo WAR correctamente mapeado
+      - ./war/:/usr/local/tomcat/webapps/ # Archivo WAR correctamente mapeado
 
 volumes:
   witcher-data:

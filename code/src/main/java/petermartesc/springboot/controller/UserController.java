@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpStatus;
 import petermartesc.springboot.model.User;
 import petermartesc.springboot.service.rest.interfaces.IUserService;
 import jakarta.validation.Valid;
@@ -25,12 +26,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/users")
-public class UsersController {
+public class UserController {
 
     private IUserService userService;
 
     @Autowired
-    public void setUserRepository(IUserService userService) {
+    public void setUserService(IUserService userService) {
         this.userService = userService;
     }
 
@@ -57,8 +58,9 @@ public class UsersController {
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @PostMapping("/add")
-    public User createUser(@Valid @RequestBody User user) {
-        return userService.createUser(user);
+    public ResponseEntity createUser(@Valid @RequestBody User user) {
+        userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(summary = "Update user")
