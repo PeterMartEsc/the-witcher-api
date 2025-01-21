@@ -58,9 +58,8 @@ public class UserController {
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @PostMapping("/add")
-    public ResponseEntity createUser(@Valid @RequestBody User user) {
-        userService.createUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public User createUser(@Valid @RequestBody User user) {
+        return userService.createUser(user);
     }
 
     @Operation(summary = "Update user")

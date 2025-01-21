@@ -15,7 +15,9 @@ import petermartesc.springboot.service.rest.UserService;
 import petermartesc.springboot.utilities.Utilities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -61,10 +63,30 @@ public class TestUserController extends Utilities {
 
     @Test
     void addTest() {
-        when(mockUserService.createUser(any(User.class))).thenReturn(true);;
         Role rolAdmin = new Role(1, "Admin");
         User user = new User("Ejemplo", rolAdmin );
-        ResponseEntity responseEntity = controller.createUser(user);
-        Assertions.assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode(), NOT_EXPECTED_RESULT);
+
+        when(mockUserService.createUser(any(User.class))).thenReturn(user);
+        User userResponse = controller.createUser(user);
+        Assertions.assertEquals(user, userResponse, NOT_EXPECTED_RESULT);
     }
+
+    @Test
+    void deleteTest() throws ResourceNotFoundException {
+        Map<String, Boolean> expectedResponse = new HashMap<>();
+        expectedResponse.put("deleted", Boolean.TRUE);
+        Map<String, Boolean> responseEntity = controller.deleteUser(1);
+        Assertions.assertEquals(expectedResponse, responseEntity, NOT_EXPECTED_RESULT);
+    }
+
+    @Test
+    void updateTest() throws ResourceNotFoundException {
+        Role rolUser = new Role(2, "User");
+        User user = new User("Ejemplo Update", rolUser );
+
+        when(mockUserService.createUser(user)).thenReturn(user);
+        ResponseEntity responseEntity = controller.updateUser(1, user);
+        Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode(), NOT_EXPECTED_RESULT);
+    }
+
 }
