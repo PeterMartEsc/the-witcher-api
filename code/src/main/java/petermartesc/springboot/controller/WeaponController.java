@@ -22,7 +22,7 @@ public class WeaponController {
     private IWeaponService weaponService;
 
     @Autowired
-    public void setWeaponRepository(IWeaponService weaponService) {
+    public void setWeaponService(IWeaponService weaponService) {
         this.weaponService = weaponService;
     }
 
@@ -39,7 +39,7 @@ public class WeaponController {
     })
 
     @GetMapping("/{id}")
-    public ResponseEntity<Weapon> getCHaracterById(@PathVariable(value = "id") int weaponId) throws ResourceNotFoundException {
+    public ResponseEntity<Weapon> getWeaponById(@PathVariable(value = "id") int weaponId) throws ResourceNotFoundException {
         Weapon weapon = weaponService.getWeaponById(weaponId);
         return ResponseEntity.ok().body(weapon);
     }

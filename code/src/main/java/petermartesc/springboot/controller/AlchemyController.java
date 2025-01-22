@@ -21,7 +21,7 @@ public class AlchemyController {
     private IAlchemyService alchemyService;
 
     @Autowired
-    public void setAlchemyRepository(IAlchemyService alchemyService) {
+    public void setAlchemyService(IAlchemyService alchemyService) {
         this.alchemyService = alchemyService;
     }
 

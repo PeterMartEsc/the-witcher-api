@@ -22,13 +22,13 @@ public class RoleController {
     private IRoleService roleService;
 
     @Autowired
-    public void setRoleRepository(IRoleService roleService) {
+    public void setRoleService(IRoleService roleService) {
         this.roleService = roleService;
     }
 
     @Operation(summary = "Get all roles")
     @GetMapping("/")
-    public List<Role> getAllUsers() {
+    public List<Role> getAllRoles() {
         return roleService.getAllRoles();
     }
 

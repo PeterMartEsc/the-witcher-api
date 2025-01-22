@@ -14,20 +14,21 @@ public class TestAlchemy extends Utilities {
         alchemy = new Alchemy();
         alchemy.setId(ID);
         alchemy.setName(NAME);
-
+        alchemy.setMaterial(MATERIAL);
     }
 
     @Test
     public void getSetTest(){
         Assertions.assertEquals(ID, alchemy.getId(), NOT_EXPECTED_RESULT);
         Assertions.assertEquals(NAME, alchemy.getName(), NOT_EXPECTED_RESULT);
+        Assertions.assertEquals(MATERIAL, alchemy.getMaterial(), NOT_EXPECTED_RESULT);
     }
 
     @Test
     public void toStringTest(){
         Assertions.assertTrue(alchemy.toString().contains(String.valueOf(ID)), NOT_EXPECTED_RESULT);
         Assertions.assertTrue(alchemy.toString().contains(NAME), NOT_EXPECTED_RESULT);
-
+        Assertions.assertTrue(alchemy.toString().contains(MATERIAL), NOT_EXPECTED_RESULT);
     }
 
     @Test

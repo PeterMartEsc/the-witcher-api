@@ -22,7 +22,7 @@ public class MonsterController {
     private IMonsterService monsterService;
 
     @Autowired
-    public void setMonsterRepository(IMonsterService monsterService) {
+    public void setMonsterService(IMonsterService monsterService) {
         this.monsterService = monsterService;
     }
 
@@ -39,7 +39,7 @@ public class MonsterController {
     })
 
     @GetMapping("/{id}")
-    public ResponseEntity<Monster> getCHaracterById(@PathVariable(value = "id") int monsterId) throws ResourceNotFoundException {
+    public ResponseEntity<Monster> getMonsterById(@PathVariable(value = "id") int monsterId) throws ResourceNotFoundException {
         Monster monster = monsterService.getMonsterById(monsterId);
         return ResponseEntity.ok().body(monster);
     }

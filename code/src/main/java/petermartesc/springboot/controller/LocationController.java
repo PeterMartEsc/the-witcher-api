@@ -22,7 +22,7 @@ public class LocationController {
     private ILocationService locationService;
 
     @Autowired
-    public void setLocationRepository(ILocationService locationService) {
+    public void setLocationService(ILocationService locationService) {
         this.locationService = locationService;
     }
 

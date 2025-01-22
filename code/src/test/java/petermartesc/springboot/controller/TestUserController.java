@@ -57,7 +57,6 @@ public class TestUserController extends Utilities {
         list.add(new User("Pedro", rolAdmin ));
 
         when(mockUserService.getUserById(1)).thenReturn(new User("Manuel", rolUser));
-        when(mockUserService.getAllUsers()).thenReturn(list);
         Assertions.assertNotNull(controller.getUserById(1), NOT_EXPECTED_RESULT);
     }
 
@@ -84,8 +83,8 @@ public class TestUserController extends Utilities {
         Role rolUser = new Role(2, "User");
         User user = new User("Ejemplo Update", rolUser );
 
-        when(mockUserService.createUser(user)).thenReturn(user);
-        ResponseEntity responseEntity = controller.updateUser(1, user);
+        when(mockUserService.updateUser(2, user)).thenReturn(user);
+        ResponseEntity responseEntity = controller.updateUser(2, user);
         Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode(), NOT_EXPECTED_RESULT);
     }
 

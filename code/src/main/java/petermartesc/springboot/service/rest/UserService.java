@@ -43,15 +43,15 @@ public class UserService implements IUserService {
     }
 
     public User createUser(@Valid @RequestBody User user) {
-        int idRole = user.getIdrole().getId();
+        int idRole = user.getRole().getId();
         List<Role> roles = roleRepository.findAll();
 
         for (Role role : roles) {
             if(role.getId() == idRole){
-                user.setIdrole(role);
+                user.setRole(role);
                 break;
             } else {
-                user.setIdrole(null);
+                user.setRole(null);
             }
         }
 
@@ -63,7 +63,7 @@ public class UserService implements IUserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
         user.setName(userDetails.getName());
-        user.setIdrole(userDetails.getIdrole());
+        user.setRole(userDetails.getRole());
         return userRepository.save(user);
     }
 

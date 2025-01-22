@@ -21,7 +21,13 @@ public class User {
 	
 	public User() {	
 	}
-	
+
+	public User(int id, String name, Role role) {
+		this.id = id;
+		this.name = name;
+		this.role = role;
+	}
+
 	public User(String name, Role role) {
 		this.name = name;
 		this.role = role;
@@ -42,10 +48,10 @@ public class User {
 		this.name = name;
 	}
 
-	public Role getIdrole() {
+	public Role getRole() {
 		return role;
 	}
-	public void setIdrole(Role idrole) {
+	public void setRole(Role idrole) {
 		this.role = idrole;
 	}
 

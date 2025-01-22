@@ -23,7 +23,7 @@ public class CharacterController {
     private ICharacterService characterService;
 
     @Autowired
-    public void setCharacterRepository(ICharacterService characterService) {
+    public void setCharacterService(ICharacterService characterService) {
         this.characterService = characterService;
     }
 
