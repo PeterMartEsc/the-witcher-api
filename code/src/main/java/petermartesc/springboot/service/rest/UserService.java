@@ -42,19 +42,11 @@ public class UserService implements IUserService {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
     }
 
-    public User createUser(@Valid @RequestBody User user) {
+    public User createUser(@Valid @RequestBody User user) throws ResourceNotFoundException {
         int idRole = user.getRole().getId();
-        List<Role> roles = roleRepository.findAll();
-
-        for (Role role : roles) {
-            if(role.getId() == idRole){
-                user.setRole(role);
-                break;
-            } else {
-                user.setRole(null);
-            }
-        }
-
+        Role role = roleRepository.findById(idRole).
+                orElseThrow(() -> new ResourceNotFoundException("Role asociated not found for this id :: " +idRole));
+        user.setRole(role);
         return userRepository.save(user);
     }
 
@@ -62,8 +54,19 @@ public class UserService implements IUserService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
 
-        user.setName(userDetails.getName());
-        user.setRole(userDetails.getRole());
+        if(userDetails.getName() != null){
+            user.setName(userDetails.getName());
+        }
+        if(userDetails.getPassword() != null){
+            user.setPassword(userDetails.getPassword());
+        }
+        if(userDetails.getRole() != null){
+            Role role = roleRepository.findById(userDetails.getRole().getId())
+                    .orElseThrow(() -> new ResourceNotFoundException("Role asociated not found for this id :: " +
+                            userDetails.getRole().getId()));
+            user.setRole(role);
+        }
+
         return userRepository.save(user);
     }
 

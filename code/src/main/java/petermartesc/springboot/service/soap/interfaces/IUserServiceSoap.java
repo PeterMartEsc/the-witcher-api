@@ -4,6 +4,7 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
+import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.User;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public interface IUserServiceSoap {
     User getUserById(@WebParam(name = "userId") int userId);
 
     @WebMethod
-    boolean createUser(@WebParam(name = "user") User user);
+    boolean createUser(@WebParam(name = "user") User user) throws ResourceNotFoundException;
     @WebMethod
     boolean updateUser(@WebParam(name = "user") User user, @WebParam(name = "userId") int userId);
 

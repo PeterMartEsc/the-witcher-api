@@ -8,7 +8,7 @@ import java.util.List;
 public interface IUserService {
     List<User> getAllUsers();
     User getUserById(int userId) throws ResourceNotFoundException;
-    public User createUser(User user);
+    public User createUser(User user) throws ResourceNotFoundException;
     User updateUser(int userId, User userDetails) throws ResourceNotFoundException;
     void deleteUser(int userId) throws ResourceNotFoundException;
 }

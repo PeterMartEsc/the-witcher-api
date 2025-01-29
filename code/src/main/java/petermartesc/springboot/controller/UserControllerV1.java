@@ -3,8 +3,11 @@ package petermartesc.springboot.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import org.springframework.http.HttpStatus;
+import petermartesc.springboot.dto.user.UserDtoInputV1;
+import petermartesc.springboot.dto.user.UserDtoOutV1;
+import petermartesc.springboot.model.Role;
 import petermartesc.springboot.model.User;
 import petermartesc.springboot.service.rest.interfaces.IUserService;
 import jakarta.validation.Valid;
@@ -26,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/users")
-public class UserController {
+public class UserControllerV1 {
 
     private IUserService userService;
 
@@ -37,8 +40,17 @@ public class UserController {
 
     @Operation(summary = "Get all users")
     @GetMapping("/")
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public List<UserDtoOutV1> getAllUsers() {
+        List<UserDtoOutV1> dtoUsers = userService.getAllUsers()
+                .stream()
+                .map(user -> new UserDtoOutV1(
+                                user.getId(),
+                                user.getName(),
+                                user.getPassword(),
+                                user.getRole().getId()
+                        )
+                ).collect(Collectors.toList());
+        return dtoUsers;
     }
 
     @Operation(summary = "Get user by ID")
@@ -47,9 +59,15 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "User not found")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable(value = "id") int userId) throws ResourceNotFoundException {
+    public ResponseEntity<UserDtoOutV1> getUserById(@PathVariable(value = "id") int userId) throws ResourceNotFoundException {
         User user = userService.getUserById(userId);
-        return ResponseEntity.ok().body(user);
+        UserDtoOutV1 dto = new UserDtoOutV1(
+                user.getId(),
+                user.getName(),
+                user.getPassword(),
+                user.getRole().getId()
+        );
+        return ResponseEntity.ok().body(dto);
     }
 
     @Operation(summary = "Insert user")
@@ -58,7 +76,15 @@ public class UserController {
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
     @PostMapping("/add")
-    public User createUser(@Valid @RequestBody User user) {
+    public User createUser(@Valid @RequestBody UserDtoInputV1 dto) throws ResourceNotFoundException {
+        User user = new User();
+        user.setName(dto.name());
+        user.setPassword(dto.password());
+
+        Role role = new Role();
+        role.setId(dto.role());
+        user.setRole(role);
+
         return userService.createUser(user);
     }
 
@@ -69,8 +95,16 @@ public class UserController {
     })
     @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUser(@PathVariable(value = "id") int userId,
-                                           @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
-        final User updatedUser = userService.updateUser(userId, userDetails);
+                                           @Valid @RequestBody UserDtoInputV1 dto) throws ResourceNotFoundException {
+        User user = new User();
+        user.setName(dto.name());
+        user.setPassword(dto.password());
+
+        Role role = new Role();
+        role.setId(dto.role());
+        user.setRole(role);
+        /*final*/ User updatedUser = userService.updateUser(userId, user);
+
         return ResponseEntity.ok(updatedUser);
     }
 

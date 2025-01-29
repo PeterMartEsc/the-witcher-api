@@ -34,7 +34,7 @@ public class UserServiceSoap implements IUserServiceSoap {
     }
 
     @Override
-    public boolean createUser(User user) {
+    public boolean createUser(User user) throws ResourceNotFoundException {
         if(user == null){
             return false;
         }

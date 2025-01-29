@@ -1,5 +1,6 @@
 package petermartesc.springboot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -10,13 +11,17 @@ public class User {
 
 	@Id
 	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonIgnore
 	private int id;
 
 	@Column(name = "name", nullable = false)
 	private String name;
 
+	@Column(name="password", nullable = false)
+	private String password;
+
 	@ManyToOne
-	@JoinColumn(name = "role_id", nullable = true)
+	@JoinColumn(name = "role"/*, nullable = true*/)
 	private Role role;
 	
 	public User() {	
@@ -55,6 +60,14 @@ public class User {
 		this.role = idrole;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -70,11 +83,11 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [" + '\'' +
-						"id=" + id + ", " + '\'' +
-						"name=" + name + '\'' +
-						"role=" + role + '\'' +
-				"]";
+		return "User{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", password='" + password + '\'' +
+				", role=" + role +
+				'}';
 	}
-	
 }

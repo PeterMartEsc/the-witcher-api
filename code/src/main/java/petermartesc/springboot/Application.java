@@ -41,23 +41,56 @@ public class Application {
 						"DROP TABLE IF EXISTS locations;",
 
 
-						"CREATE TABLE roles (id INT AUTO_INCREMENT, role VARCHAR(20), PRIMARY KEY (id));",
-						"CREATE TABLE users (id INT AUTO_INCREMENT, name VARCHAR(50), role_id INT, PRIMARY KEY (id), " +
-								"FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE SET NULL ); ",
-						"CREATE TABLE characters ( id INT AUTO_INCREMENT,name VARCHAR(50),surname VARCHAR(100), " +
-								"description VARCHAR(250), PRIMARY KEY (id) );" ,
-						"CREATE TABLE monsters (id INT AUTO_INCREMENT, name VARCHAR(50), " +
-								"difficulty VARCHAR(25), PRIMARY KEY (id));",
-						"CREATE TABLE weapons (id INT AUTO_INCREMENT, name VARCHAR(30), " +
-								"rarity VARCHAR(10), PRIMARY KEY (id));",
-						"CREATE TABLE alchemys (id INT AUTO_INCREMENT, name VARCHAR(20), " +
-								"material VARCHAR(20), PRIMARY KEY (id));",
-						"CREATE TABLE locations (id INT AUTO_INCREMENT, name VARCHAR(20), " +
-								"kingdom VARCHAR(20), PRIMARY KEY (id));",
+						"CREATE TABLE roles (" +
+								"id INT AUTO_INCREMENT, " +
+								"role VARCHAR(20), " +
+								"PRIMARY KEY (id)" +
+						");",
+						"CREATE TABLE users (" +
+								"id INT AUTO_INCREMENT, " +
+								"name VARCHAR(50), " +
+								"password VARCHAR(100), " +
+								"role INT, " +
+								"PRIMARY KEY (id), " +
+								"FOREIGN KEY (role) REFERENCES roles(id) ON DELETE SET NULL " +
+						"); ",
+						"CREATE TABLE characters ( " +
+								"id INT AUTO_INCREMENT, " +
+								"name VARCHAR(50), " +
+								"surname VARCHAR(100), " +
+								"description VARCHAR(250), " +
+								"PRIMARY KEY (id) " +
+						");" ,
+						"CREATE TABLE monsters (" +
+								"id INT AUTO_INCREMENT, " +
+								"name VARCHAR(50), " +
+								"difficulty VARCHAR(25), " +
+								"PRIMARY KEY (id)" +
+						");",
+						"CREATE TABLE weapons (" +
+								"id INT AUTO_INCREMENT, " +
+								"name VARCHAR(30), " +
+								"rarity VARCHAR(10), " +
+								"PRIMARY KEY (id)" +
+						");",
+						"CREATE TABLE alchemys (" +
+								"id INT AUTO_INCREMENT, " +
+								"name VARCHAR(20), " +
+								"material VARCHAR(20), " +
+								"PRIMARY KEY (id)" +
+						");",
+						"CREATE TABLE locations (" +
+								"id INT AUTO_INCREMENT, " +
+								"name VARCHAR(20), " +
+								"kingdom VARCHAR(20), " +
+								"PRIMARY KEY (id)" +
+						");",
 
 
 						"INSERT INTO roles (id, role) VALUES (1, 'Admin'), (2, 'User');",
-						"INSERT INTO users (id, name, role_id) VALUES (1, 'Manuel', 2), (2, 'Pedro', 1);",
+						"INSERT INTO users (id, name, password, role) VALUES " +
+								"(1, 'Manuel', 'password_user', 2), " +
+								"(2, 'Pedro', 'password_admin', 1);",
 						"INSERT INTO characters (id, name, surname, description) VALUES " +
 						"(1, 'Geralt', 'of Rivia', 'A witcher known for his skills with a sword')," +
 						"(2, 'Ciri', 'of Cintra', 'A princess with extraordinary powers');",
@@ -65,8 +98,10 @@ public class Application {
 								"(1, 'Drowned', 'easy'), (2, 'Kikimora', 'mid'), (3, 'Queen Kikimora', 'impossible');",
 						"INSERT INTO weapons (id, name, rarity) VALUES " +
 								"(1, 'Silver Sword', 'uncommon'), (2, 'Witchers Iron Sword', 'uncommon');",
-						"INSERT INTO alchemys (id, name, material) VALUES (1, 'Alp Fangs', 'Eter'), (2, 'Cadaverine', 'Rebis');",
-						"INSERT INTO locations (id, name, kingdom) VALUES (1, 'Wyzima', 'Temeria'), (2, 'Blaviken', 'Redania');",
+						"INSERT INTO alchemys (id, name, material) VALUES " +
+								"(1, 'Alp Fangs', 'Eter'), (2, 'Cadaverine', 'Rebis');",
+						"INSERT INTO locations (id, name, kingdom) VALUES " +
+								"(1, 'Wyzima', 'Temeria'), (2, 'Blaviken', 'Redania');",
 
 						//"ALTER TABLE roles AUTO_INCREMENT = (SELECT MAX(id) + 1 FROM roles);",
 		};
