@@ -43,19 +43,22 @@ public class JwtFilter extends OncePerRequestFilter {
         
     	
     	//rutas permitidas sin estar autenticado
-    	/*String rutasPermitidas[]= { "/swagger-ui.html",
-    	        					"/swagger-ui/", "/v2/", 
-    	        					"configuration/",	"/swagger", 
-    	        					"/webjars/", "/api/login", 
-    	        					"/api/register", "/v3/",
-    	        					"/websocket", "/index.html", "/api/v1"};*/
-		String rutasPermitidas[]= { /*"/",*/  "/index.html",
-									"/swagger-ui/", "/swagger-ui.html",
-									"/v3/api-docs/", "/swagger-resources/",
-									"/configuration/", "/swagger/",
+		/*String rutasPermitidas[]= { *//*"/",*//*  "/witcher/index.html",
+									"/witcher/swagger-ui/", "/witcher/swagger-ui.html",
+									"/witcher/v3/api-docs/", "/witcher/swagger-resources/",
+									"/configuration/", "/witcher/swagger/",
 
-									"/v2/", "/v3/", "/webjars/",
-									"/websocket/", "/api/v1/"};
+									"/witcher/v2/", "/witcher/v3/", "/webjars/",
+									"/websocket/", "/witcher/api/v1/"};*/
+		String rutasPermitidas[] = {
+				/*"/witcher/",*/ "/index.html",
+				"/swagger-ui", "/swagger-ui/",
+				"/swagger-ui/index.html", "/swagger-ui.html",
+				"/v3/api-docs", "/v3/api-docs/",
+				"/swagger-resources", "/swagger-resources/",
+				"/configuration/", "/webjars/",
+				"/api/v1/", "/websocket/"
+		};
 
 		//System.out.println("estamos en el filtro!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 

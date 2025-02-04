@@ -17,7 +17,7 @@ public class JwtService {
     private String secret;
 
     @Value("${jwt.expiration}")
-    private long expiration; //Aprox 3 meses //86400 24h
+    private long expiration; //86400 24h
 
     public String generateToken(String username, String rol) {
         return JWT.create()

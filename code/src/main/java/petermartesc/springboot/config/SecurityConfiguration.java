@@ -36,7 +36,7 @@ public class SecurityConfiguration {
 					.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
 					.requestMatchers(
-					"/",  "/index.html",
+					"/",  "/index.html", /*"/",*/
 					"/swagger-ui/**", "/swagger-ui.html",
 					"/v3/api-docs/**", "/swagger-resources/**",
 					"/configuration/**", "/swagger*/**",
@@ -51,6 +51,7 @@ public class SecurityConfiguration {
 				)
 				.sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+		System.out.println("PAPAAAAAAA");
 		return http.getOrBuild();
 	}
 }
