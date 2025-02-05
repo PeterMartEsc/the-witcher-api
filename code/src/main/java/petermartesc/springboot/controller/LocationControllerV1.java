@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/locations")
-public class LocationController {
+public class LocationControllerV1 {
 
     private ILocationService locationService;
 

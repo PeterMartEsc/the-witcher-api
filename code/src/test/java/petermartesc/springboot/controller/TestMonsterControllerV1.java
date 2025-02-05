@@ -21,18 +21,18 @@ import java.util.Map;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class TestMonsterController extends Utilities {
+public class TestMonsterControllerV1 extends Utilities {
 
     @Mock
     MonsterService mockMonsterService;
 
     @InjectMocks
-    MonsterController controller;
+    MonsterControllerV1 controller;
 
     @BeforeEach
     public void beforeEach (){
         MockitoAnnotations.openMocks(this);
-        controller = new MonsterController();
+        controller = new MonsterControllerV1();
         controller.setMonsterService(mockMonsterService);
     }
 

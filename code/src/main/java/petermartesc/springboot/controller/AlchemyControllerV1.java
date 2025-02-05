@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/alchemys")
-public class AlchemyController {
+public class AlchemyControllerV1 {
     private IAlchemyService alchemyService;
 
     @Autowired

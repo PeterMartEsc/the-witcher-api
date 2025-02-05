@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/weapons")
-public class WeaponController {
+public class WeaponControllerV1 {
 
     private IWeaponService weaponService;
 
