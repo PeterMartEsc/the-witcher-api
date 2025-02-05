@@ -21,18 +21,18 @@ import java.util.Map;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class TestRoleController extends Utilities {
+public class TestRoleControllerV1 extends Utilities {
 
     @Mock
     RoleService mockRoleService;
 
     @InjectMocks
-    RoleController controller;
+    RoleControllerV1 controller;
 
     @BeforeEach
     public void beforeEach (){
         MockitoAnnotations.openMocks(this);
-        controller = new RoleController();
+        controller = new RoleControllerV1();
         controller.setRoleService(mockRoleService);
     }
 

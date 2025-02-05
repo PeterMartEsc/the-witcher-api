@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/characters")
-public class CharacterController {
+public class CharacterControllerV1 {
     private ICharacterService characterService;
 
     @Autowired

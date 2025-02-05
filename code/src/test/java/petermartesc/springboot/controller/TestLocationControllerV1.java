@@ -21,18 +21,18 @@ import java.util.Map;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class TestLocationController extends Utilities {
+public class TestLocationControllerV1 extends Utilities {
 
     @Mock
     LocationService mockLocationService;
 
     @InjectMocks
-    LocationController controller;
+    LocationControllerV1 controller;
 
     @BeforeEach
     public void beforeEach (){
         MockitoAnnotations.openMocks(this);
-        controller = new LocationController();
+        controller = new LocationControllerV1();
         controller.setLocationService(mockLocationService);
     }
 

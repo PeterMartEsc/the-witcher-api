@@ -17,7 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/monsters")
-public class MonsterController {
+public class MonsterControllerV1 {
 
     private IMonsterService monsterService;
 
