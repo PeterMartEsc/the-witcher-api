@@ -57,10 +57,8 @@ public class JwtFilter extends OncePerRequestFilter {
 				"/v3/api-docs", "/v3/api-docs/",
 				"/swagger-resources", "/swagger-resources/",
 				"/configuration/", "/webjars/",
-				"/api/v1/", "/websocket/"
+				"/api/auth/", "/websocket/"
 		};
-
-		//System.out.println("estamos en el filtro!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
 
     	for (String ruta : rutasPermitidas) {
@@ -85,7 +83,6 @@ public class JwtFilter extends OncePerRequestFilter {
             
             	final String rol = mapInfoToken.get("role");
 
-				//System.out.println("HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY");
             	//UserDetails en Spring Security es un interfaz basado en Principal de java
             	//y es la forma que tiene Spring de mantener la información de usuario "autenticado"
             	//en el contexto de seguridad. Nos permite guardar la información de username

@@ -32,7 +32,7 @@ public class AuthService {
 	private MailService mailService;*/
 
     
-	public String register(String username, String password, String email) {
+	public String register(String username, String password/*, String email*/) {
 		User user = new User();
 		user.setName(username);
 		user.setPassword(passwordEncoder.encode(password));
@@ -40,14 +40,11 @@ public class AuthService {
 		if(roleUser == null){
 			return null;
 		}
-		user.setRole(roleUser);
 
+		user.setRole(roleUser);
 		User saved = userRepository.save(user);
 		
 		if( saved != null) {
-			/*String senders[] = {"apps.akameterindustries@gmail.com", email};
-			mailService.send(senders, "user creado: "+user.getNombre(),
-					"http://localhost:8080/api/v1/confirmacion/?correo="+user.getCorreo()+"&token="+tokenVerifCorreo);*/
 			String generatedToken = jwtService.generateToken(user.getName(), user.getRole().getRoleName());
 			return generatedToken;
 		}else {

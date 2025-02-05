@@ -31,7 +31,7 @@ public class SecurityConfiguration {
 
 		http
 			.cors(cors->cors.disable())
-			.csrf(csrf -> csrf.disable() )
+			.csrf(csrf -> csrf.disable())
 				.authorizeHttpRequests(auth -> auth
 					.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
@@ -42,7 +42,7 @@ public class SecurityConfiguration {
 					"/configuration/**", "/swagger*/**",
 
 					"/v2/**", "/v3/**", "/webjars/**",
-					"/websocket*/**", "/api/v1/**"
+					"/websocket*/**", "/api/auth/**"
 					).permitAll()
 						//.requestMatchers("/api/v2/alumnos").hasAnyRole("USER", "ADMIN")
 					//.requestMatchers("/api/v2/**").hasAnyRole("USER", "ADMIN")
@@ -51,7 +51,7 @@ public class SecurityConfiguration {
 				)
 				.sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-		System.out.println("PAPAAAAAAA");
+		//System.out.println("PAPAAAAAAA");
 		return http.getOrBuild();
 	}
 }

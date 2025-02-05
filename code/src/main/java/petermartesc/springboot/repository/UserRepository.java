@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Integer>{
 
     @Query(
-            value="SELECT * FROM usuarios WHERE nombre = :nombre",
+            value="SELECT * FROM users WHERE name = :nombre",
             nativeQuery = true
     ) //Native Query
     Optional<User> findByNombre(@Param("nombre") String nombre);

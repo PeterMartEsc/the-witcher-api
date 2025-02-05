@@ -16,6 +16,6 @@ public class Utilities {
     public static final String RARITY = "rarityExample";
 
 
-    public static final Role ROLE = new Role(1, "Admin");
+    public static final Role ROLE = new Role(1, "ROLE_ADMIN");
     public static final User USER = new User(NAME, ROLE);
 }
