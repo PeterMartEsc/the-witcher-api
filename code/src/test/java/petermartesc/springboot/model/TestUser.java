@@ -14,6 +14,7 @@ public class TestUser extends Utilities {
         user = new User();
         user.setId(ID);
         user.setName(NAME);
+        user.setPassword(PASSWORD);
         user.setRole(ROLE);
     }
 
@@ -21,6 +22,7 @@ public class TestUser extends Utilities {
     public void getSetTest(){
         Assertions.assertEquals(ID, user.getId(), NOT_EXPECTED_RESULT);
         Assertions.assertEquals(NAME, user.getName(), NOT_EXPECTED_RESULT);
+        Assertions.assertEquals(PASSWORD, user.getPassword(), NOT_EXPECTED_RESULT);
         Assertions.assertEquals(ROLE, user.getRole(), NOT_EXPECTED_RESULT);
     }
 
@@ -28,6 +30,7 @@ public class TestUser extends Utilities {
     public void toStringTest(){
         Assertions.assertTrue(user.toString().contains(String.valueOf(ID)), NOT_EXPECTED_RESULT);
         Assertions.assertTrue(user.toString().contains(NAME), NOT_EXPECTED_RESULT);
+        Assertions.assertTrue(user.toString().contains(PASSWORD), NOT_EXPECTED_RESULT);
         Assertions.assertTrue(user.toString().contains(ROLE.getRoleName()), NOT_EXPECTED_RESULT);
     }
 

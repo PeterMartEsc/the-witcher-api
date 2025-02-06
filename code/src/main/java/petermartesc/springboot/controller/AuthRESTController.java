@@ -15,9 +15,13 @@ public class AuthRESTController {
 
     @Autowired
     private AuthService authService;
-
     @Autowired
     private UserService usuarioService;
+
+    @Autowired
+    public void setAuthService(AuthService authService) {
+        this.authService = authService;
+    }
 
     @PostMapping("/register/")
     public String register(@RequestBody UserDtoAuth userDto ) {

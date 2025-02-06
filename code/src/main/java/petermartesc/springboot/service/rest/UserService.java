@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,7 +42,7 @@ public class UserService implements IUserService {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
     }
-
+    @Transactional
     public User createUser(@Valid @RequestBody User user) throws ResourceNotFoundException {
         int idRole = user.getRole().getId();
         Role role = roleRepository.findById(idRole).
@@ -49,7 +50,7 @@ public class UserService implements IUserService {
         user.setRole(role);
         return userRepository.save(user);
     }
-
+    @Transactional
     public User updateUser(@PathVariable(value = "id") int userId, @Valid @RequestBody User userDetails) throws ResourceNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));
@@ -70,6 +71,7 @@ public class UserService implements IUserService {
         return userRepository.save(user);
     }
 
+    @Transactional
     public void deleteUser(@PathVariable(value = "id") int userId) throws ResourceNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + userId));

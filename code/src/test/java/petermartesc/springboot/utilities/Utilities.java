@@ -7,7 +7,9 @@ public class Utilities {
     public final String NOT_EXPECTED_RESULT = "NO SE HA OBTENIDO EL RESULTADO ESPERADO";
 
     public static final int ID = 1;
+
     public static final String NAME = "nameTest";
+    public static final String PASSWORD = "password_example";
     public static final String SURNAME = "surnameTest";
     public static final String DESCRIPTION = "descriptionTest";
     public static final String MATERIAL = "materialName";

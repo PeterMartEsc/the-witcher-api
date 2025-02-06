@@ -60,8 +60,20 @@ public class TestUserService extends Utilities {
         Assertions.assertNotNull(userService.getUserById(1), NOT_EXPECTED_RESULT);
     }
 
+
+
     @Test
-    void addTest() throws ResourceNotFoundException {
+    void updateTest() throws ResourceNotFoundException {
+        //User user = new User(NAME, ROLE);
+        when(repositoryUserMock.findById(1)).thenReturn(Optional.of(USER));
+        when(repositoryRoleMock.findById(1)).thenReturn(Optional.of(ROLE));
+        when(repositoryUserMock.save(any(User.class))).thenReturn(USER);
+        System.out.println(USER);
+        Assertions.assertEquals(USER, userService.updateUser(ID, USER), NOT_EXPECTED_RESULT);
+    }
+
+    @Test
+    void zaddTest() throws ResourceNotFoundException {
         //when(repositoryMock.existsById(1)).thenReturn(false);
         //User user = new User(NAME, ROLE);
         when(repositoryUserMock.save(any(User.class))).thenReturn(USER);
@@ -70,25 +82,11 @@ public class TestUserService extends Utilities {
     }
 
     @Test
-    void updateTest() throws ResourceNotFoundException {
-        //User user = new User(NAME, ROLE);
-        when(repositoryUserMock.findById(1)).thenReturn(Optional.of(USER));
-        when(repositoryRoleMock.findById(1)).thenReturn(Optional.of(ROLE));
-        when(repositoryUserMock.save(any(User.class))).thenReturn(USER);
-        Assertions.assertEquals(USER, userService.updateUser(ID, USER), NOT_EXPECTED_RESULT);
-    }
-
-    @Test
     void deleteTest() throws ResourceNotFoundException {
         when(repositoryUserMock.findById(1)).thenReturn(Optional.of(USER));
         doNothing().when(repositoryUserMock).delete(isA(User.class));
         userService.deleteUser(1);
         verify(repositoryUserMock, times(1)).delete(USER);
-
-    }
-
-    @AfterEach
-    public void afterEach(){
 
     }
 }
