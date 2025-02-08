@@ -1,6 +1,5 @@
 package petermartesc.springboot.controller;
 
-import jdk.jshell.execution.Util;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,18 +21,18 @@ import java.util.Map;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class TestCharacterController extends Utilities {
+public class TestCharacterControllerV1 extends Utilities {
 
     @Mock
     CharacterService mockCharacterService;
 
     @InjectMocks
-    CharacterController controller;
+    CharacterControllerV1 controller;
 
     @BeforeEach
     public void beforeEach (){
         MockitoAnnotations.openMocks(this);
-        controller = new CharacterController();
+        controller = new CharacterControllerV1();
         controller.setCharacterService(mockCharacterService);
     }
 

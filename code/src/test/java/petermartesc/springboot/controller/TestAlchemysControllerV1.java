@@ -21,18 +21,18 @@ import java.util.Map;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class TestAlchemysController extends Utilities {
+public class TestAlchemysControllerV1 extends Utilities {
 
     @Mock
     AlchemyService mockAlchemyService;
 
     @InjectMocks
-    AlchemyController controller;
+    AlchemyControllerV1 controller;
 
     @BeforeEach
     public void beforeEach (){
         MockitoAnnotations.openMocks(this);
-        controller = new AlchemyController();
+        controller = new AlchemyControllerV1();
         controller.setAlchemyService(mockAlchemyService);
     }
 
