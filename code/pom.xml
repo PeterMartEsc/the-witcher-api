@@ -102,10 +102,21 @@
 			<version>6.1.1</version>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.28</version>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>3.39.2.0</version> <!-- Usa la última versión disponible -->
+		</dependency>
+		<!-- Hibernate 6, SQLite dialect is supported -->
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-community-dialects</artifactId>
 		</dependency>
 
 		<dependency>
