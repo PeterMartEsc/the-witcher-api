@@ -7,7 +7,9 @@ public class Utilities {
     public final String NOT_EXPECTED_RESULT = "NO SE HA OBTENIDO EL RESULTADO ESPERADO";
 
     public static final int ID = 1;
+
     public static final String NAME = "nameTest";
+    public static final String PASSWORD = "password_example";
     public static final String SURNAME = "surnameTest";
     public static final String DESCRIPTION = "descriptionTest";
     public static final String MATERIAL = "materialName";
@@ -16,6 +18,6 @@ public class Utilities {
     public static final String RARITY = "rarityExample";
 
 
-    public static final Role ROLE = new Role(1, "Admin");
+    public static final Role ROLE = new Role(1, "ROLE_ADMIN");
     public static final User USER = new User(NAME, ROLE);
 }

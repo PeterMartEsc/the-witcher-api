@@ -5,7 +5,7 @@ package petermartesc.springboot.dto.user;
  * @param name
  * @param password
  */
-public record UserDtoInputV2(
+public record UserDtoAuth(
         String name,
         String password
         //int role

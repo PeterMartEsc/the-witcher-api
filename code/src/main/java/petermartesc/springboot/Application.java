@@ -87,10 +87,10 @@ public class Application {
 						");",
 
 
-						"INSERT INTO roles (id, role) VALUES (1, 'Admin'), (2, 'User');",
+						"INSERT INTO roles (id, role) VALUES (1, 'ROLE_ADMIN'), (2, 'ROLE_USER');",
 						"INSERT INTO users (id, name, password, role) VALUES " +
-								"(1, 'Manuel', 'password_user', 2), " +
-								"(2, 'Pedro', 'password_admin', 1);",
+								"(1, 'Manuel', '$2a$10$Y4DFcKGpcGwLsKMT4EjMeOO7uhiMfAC/Swev3pU4UkG6ZSSG6bgYW', 2), " +
+								"(2, 'Pedro', '$2a$10$Y4DFcKGpcGwLsKMT4EjMeOO7uhiMfAC/Swev3pU4UkG6ZSSG6bgYW', 1);",
 						"INSERT INTO characters (id, name, surname, description) VALUES " +
 						"(1, 'Geralt', 'of Rivia', 'A witcher known for his skills with a sword')," +
 						"(2, 'Ciri', 'of Cintra', 'A princess with extraordinary powers');",

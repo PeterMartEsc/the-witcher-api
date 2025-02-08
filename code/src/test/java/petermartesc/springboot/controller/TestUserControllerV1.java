@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import petermartesc.springboot.dto.user.UserDtoInputV1;
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Role;
 import petermartesc.springboot.model.User;
@@ -60,15 +61,15 @@ public class TestUserControllerV1 extends Utilities {
         Assertions.assertNotNull(controller.getUserById(1), NOT_EXPECTED_RESULT);
     }
 
-    /*@Test
-    void addTest() {
+    @Test
+    void zaddTest() throws ResourceNotFoundException {
         Role rolAdmin = new Role(1, "Admin");
-        User user = new User("Ejemplo", rolAdmin );
-
+        User user = new User(1,"Ejemplo", PASSWORD, rolAdmin );
+        UserDtoInputV1 dto = new UserDtoInputV1( user.getName(), user.getPassword(), user.getRole().getId() );
         when(mockUserService.createUser(any(User.class))).thenReturn(user);
-        User userResponse = controller.createUser(user);
+        User userResponse = controller.createUser(dto);
         Assertions.assertEquals(user, userResponse, NOT_EXPECTED_RESULT);
-    }*/
+    }
 
     @Test
     void deleteTest() throws ResourceNotFoundException {
@@ -78,14 +79,15 @@ public class TestUserControllerV1 extends Utilities {
         Assertions.assertEquals(expectedResponse, responseEntity, NOT_EXPECTED_RESULT);
     }
 
-    /*@Test
+    @Test
     void updateTest() throws ResourceNotFoundException {
         Role rolUser = new Role(2, "User");
-        User user = new User("Ejemplo Update", rolUser );
+        User user = new User(1,"Ejemplo", PASSWORD, rolUser );
+        UserDtoInputV1 dto = new UserDtoInputV1( user.getName(), user.getPassword(), user.getRole().getId() );
 
         when(mockUserService.updateUser(2, user)).thenReturn(user);
-        ResponseEntity responseEntity = controller.updateUser(2, user);
+        ResponseEntity responseEntity = controller.updateUser(2, dto);
         Assertions.assertEquals(HttpStatus.OK, responseEntity.getStatusCode(), NOT_EXPECTED_RESULT);
-    }*/
+    }
 
 }
