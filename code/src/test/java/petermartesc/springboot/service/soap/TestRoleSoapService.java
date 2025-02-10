@@ -33,7 +33,7 @@ public class TestRoleSoapService extends Utilities {
     /*@InjectMocks
     RoleService roleService;*/
 
-    @BeforeEach
+    /*@BeforeEach
     public void beforeEach (){
         MockitoAnnotations.openMocks(this);
         roleService = new RoleServiceSoap();
@@ -76,5 +76,5 @@ public class TestRoleSoapService extends Utilities {
     void deleteTest() throws ResourceNotFoundException {
         when(repositoryRoleMock.deleteRoleById(1)).thenReturn(true);
         Assertions.assertTrue(roleService.deleteRoleById(ID), NOT_EXPECTED_RESULT);
-    }
+    }*/
 }

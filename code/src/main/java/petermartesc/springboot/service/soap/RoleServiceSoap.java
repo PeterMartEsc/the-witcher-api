@@ -11,10 +11,10 @@ import java.util.List;
 
 public class RoleServiceSoap implements IRoleServiceSoap {
 
-    private IRoleServiceSoap roleService;
+    private IRoleService roleService;
 
     @Autowired
-    public void setRoleRepository(IRoleServiceSoap roleService) {
+    public void setRoleRepository(IRoleService roleService) {
         this.roleService = roleService;
     }
     
@@ -25,7 +25,11 @@ public class RoleServiceSoap implements IRoleServiceSoap {
 
     @Override
     public Role getRoleById(int roleId) {
-        return roleService.getRoleById(roleId);
+        try {
+            return roleService.getRoleById(roleId);
+        } catch (ResourceNotFoundException e) {
+            throw new WebServiceException("Error obteniendo el rol", e);
+        }
     }
 
     @Override
@@ -39,14 +43,24 @@ public class RoleServiceSoap implements IRoleServiceSoap {
 
     @Override
     public boolean updateRole(Role role, int roleId) {
-        roleService.updateRole( role, roleId);
+        try {
+            roleService.updateRole(roleId, role);
+
+        } catch (ResourceNotFoundException e) {
+            throw new WebServiceException("Error al actualizar el rol", e);
+        }
 
         return true;
     }
 
     @Override
     public boolean deleteRoleById(int roleId) {
-        roleService.deleteRoleById(roleId);
-        return true;
+        try {
+            roleService.deleteRole(roleId);
+            return true;
+        } catch (ResourceNotFoundException e) {
+            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
+            throw new WebServiceException("Error al eliminar el rol", e);
+        }
     }
 }

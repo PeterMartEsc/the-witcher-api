@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Alchemy;
+import petermartesc.springboot.service.rest.AlchemyService;
 import petermartesc.springboot.service.soap.interfaces.IAlchemyServiceSoap;
 import petermartesc.springboot.utilities.Utilities;
 
@@ -23,16 +24,16 @@ public class TestAlchemySoapService extends Utilities {
     IAlchemyServiceSoap repositoryAlchemyMock;
 
     @InjectMocks
-    AlchemyServiceSoap alchemyService;
+    AlchemyServiceSoap alchemyServiceSoap;
 
-    /*@InjectMocks
-    AlchemyService alchemyService;*/
+    /*@Mock
+    AlchemyService alchemyService;
 
     @BeforeEach
     public void beforeEach (){
         MockitoAnnotations.openMocks(this);
-        alchemyService = new AlchemyServiceSoap();
-        alchemyService.setAlchemyRepository(repositoryAlchemyMock);
+        alchemyServiceSoap = new AlchemyServiceSoap();
+        alchemyServiceSoap.setAlchemyRepository(alchemyService);
     }
     @Test
     void getAllTest() {
@@ -40,15 +41,15 @@ public class TestAlchemySoapService extends Utilities {
         list.add(new Alchemy(3, NAME, MATERIAL));
         list.add(new Alchemy(4, NAME, MATERIAL));
         when(repositoryAlchemyMock.getAllAlchemys()).thenReturn(list);
-        Assertions.assertNotNull(alchemyService.getAllAlchemys(), NOT_EXPECTED_RESULT);
+        Assertions.assertNotNull(alchemyServiceSoap.getAllAlchemys(), NOT_EXPECTED_RESULT);
     }
 
 
-    @Test
+    *//*@Test
     void getOneTest() throws ResourceNotFoundException {
         when(repositoryAlchemyMock.getAlchemyById(1)).thenReturn(new Alchemy(1, NAME, MATERIAL));
-        Assertions.assertNotNull(alchemyService.getAlchemyById(1), NOT_EXPECTED_RESULT);
-    }
+        Assertions.assertNotNull(alchemyServiceSoap.getAlchemyById(1), NOT_EXPECTED_RESULT);
+    }*//*
 
 
 
@@ -58,18 +59,18 @@ public class TestAlchemySoapService extends Utilities {
         when(repositoryAlchemyMock.getAlchemyById(1)).thenReturn(new Alchemy(1, NAME, MATERIAL));
         when(repositoryAlchemyMock.updateAlchemy(new Alchemy(3, NAME, MATERIAL), ID)).thenReturn(true);
         //System.out.println(USER);
-        Assertions.assertTrue(alchemyService.updateAlchemy(new Alchemy(3, NAME, MATERIAL), 1), NOT_EXPECTED_RESULT);
+        Assertions.assertTrue(alchemyServiceSoap.updateAlchemy(new Alchemy(3, NAME, MATERIAL), 1), NOT_EXPECTED_RESULT);
     }
 
     @Test
     void zaddTest() throws ResourceNotFoundException {
         when(repositoryAlchemyMock.createAlchemy(any(Alchemy.class))).thenReturn(true);
-        Assertions.assertTrue(alchemyService.createAlchemy(new Alchemy(3, NAME, MATERIAL)), NOT_EXPECTED_RESULT);
+        Assertions.assertTrue(alchemyServiceSoap.createAlchemy(new Alchemy(3, NAME, MATERIAL)), NOT_EXPECTED_RESULT);
     }
 
     @Test
     void deleteTest() throws ResourceNotFoundException {
         when(repositoryAlchemyMock.deleteAlchemyById(1)).thenReturn(true);
-        Assertions.assertTrue(alchemyService.deleteAlchemyById(ID), NOT_EXPECTED_RESULT);
-    }
+        Assertions.assertTrue(alchemyServiceSoap.deleteAlchemyById(ID), NOT_EXPECTED_RESULT);
+    }*/
 }

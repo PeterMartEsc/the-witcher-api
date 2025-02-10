@@ -11,10 +11,10 @@ import java.util.List;
 
 public class AlchemyServiceSoap implements IAlchemyServiceSoap {
 
-    private IAlchemyServiceSoap alchemyService;
+    private IAlchemyService alchemyService;
 
     @Autowired
-    public void setAlchemyRepository(IAlchemyServiceSoap alchemyService) {
+    public void setAlchemyRepository(IAlchemyService alchemyService) {
         this.alchemyService = alchemyService;
     }
 
@@ -25,7 +25,12 @@ public class AlchemyServiceSoap implements IAlchemyServiceSoap {
 
     @Override
     public Alchemy getAlchemyById(int alchemyId) {
-        return alchemyService.getAlchemyById(alchemyId);
+        try {
+            return alchemyService.getAlchemyById(alchemyId);
+        } catch (ResourceNotFoundException e) {
+            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
+            throw new WebServiceException("Error obteniendo la alquimia", e);
+        }
     }
 
     @Override
@@ -39,14 +44,23 @@ public class AlchemyServiceSoap implements IAlchemyServiceSoap {
 
     @Override
     public boolean updateAlchemy(Alchemy alchemy, int alchemyId) {
-        alchemyService.updateAlchemy( alchemy, alchemyId);
+        try {
+            alchemyService.updateAlchemy(alchemyId, alchemy);
+        } catch (ResourceNotFoundException e) {
+            throw new WebServiceException("Error al actualizar la alquimia", e);
+        }
 
         return true;
     }
 
     @Override
     public boolean deleteAlchemyById(int alchemyId) {
-        alchemyService.deleteAlchemyById(alchemyId);
-        return true;
+        try {
+            alchemyService.deleteAlchemy(alchemyId);
+            return true;
+        } catch (ResourceNotFoundException e) {
+            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
+            throw new WebServiceException("Error eliminar la alquimia", e);
+        }
     }
 }
