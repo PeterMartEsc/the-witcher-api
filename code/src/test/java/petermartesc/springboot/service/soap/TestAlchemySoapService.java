@@ -21,21 +21,20 @@ import static org.mockito.Mockito.when;
 public class TestAlchemySoapService extends Utilities {
 
     @Mock
-    IAlchemyServiceSoap repositoryAlchemyMock;
+    AlchemyService repositoryAlchemyMock;
+
 
     @InjectMocks
     AlchemyServiceSoap alchemyServiceSoap;
 
-    /*@Mock
-    AlchemyService alchemyService;
 
     @BeforeEach
     public void beforeEach (){
         MockitoAnnotations.openMocks(this);
         alchemyServiceSoap = new AlchemyServiceSoap();
-        alchemyServiceSoap.setAlchemyRepository(alchemyService);
+        alchemyServiceSoap.setAlchemyRepository(repositoryAlchemyMock);
     }
-    @Test
+    /*@Test
     void getAllTest() {
         List<Alchemy> list = new ArrayList<>();
         list.add(new Alchemy(3, NAME, MATERIAL));

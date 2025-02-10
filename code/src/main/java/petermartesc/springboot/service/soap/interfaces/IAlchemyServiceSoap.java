@@ -4,11 +4,12 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
+import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Alchemy;
 
 import java.util.List;
 
-@WebService(targetNamespace = "springboot.service.soap")
+@WebService(targetNamespace = "petermartesc.springboot.service.soap.interfaces")
 public interface IAlchemyServiceSoap {
 
     @WebMethod
@@ -17,7 +18,7 @@ public interface IAlchemyServiceSoap {
     List<Alchemy> getAllAlchemys();
 
     @WebMethod
-    Alchemy getAlchemyById(@WebParam(name = "alchemyId") int alchemyId);
+    Alchemy getAlchemyById(@WebParam(name = "alchemyId") int alchemyId) throws ResourceNotFoundException;
 
     @WebMethod
     boolean createAlchemy(@WebParam(name = "alchemy") Alchemy alchemy);
