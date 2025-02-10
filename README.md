@@ -14,6 +14,7 @@ Este repositorio implementa una API RESTfull usando Java y Spring-Boot, siguiend
     - [Introducción](#introducción)
     - [Intrucciones para el funcionamiento](#instrucciones-para-el-funcionamiento)
     - [Endpoints](#endpoints)
+    - [Securización]()
 
 - API SOAP
     - [Introducción API SOAP](#introducción-api-soap)
@@ -117,6 +118,26 @@ El objetivo de la aplicación es permitir la creación, lectura, actualización 
         - Leer todas las ubicaciones: GET /api/v1/locations/
         - Actualizar ubicacion: PUT /api/v1/locations/update/{id}
         - Eliminar ubicacion: DELETE /api/v1/locations/delete/{id}
+
+# Securización
+
+La api REST tiene un filtro para securizar las rutas. Las unicas rutas publicas corresponden a las de __Swagger__ y las de __inicio de sesión__ y __registro__. 
+
+Una vez el usuario se registra o inicia sesión, se devuelve un __token jwt__, el cual se debe colocar en la cabecera de las peticiones para que se detecte como __autenticado__. Como usamos Swagger para comprobarlo, se deben en la pestaña que se abre al clicar en lo siguiente:
+
+<div align=center>
+    <img src="./resources/authorize.png"/>
+</div>
+
+Esto lo que hará es lanzar una cabecera del siguiente tipo con cada petición:
+
+```code
+Authorization: Bearer <token-jwt>
+```
+
+Así, el filtro detectará que tiene ese token de autorización, lo comprobará y si es correcto, permitira que se vean los enpoints securizados.
+
+Todos los endpoints securizados piden que se esté autenticado y sean o USER o ADMIN.
 
 ## Introducción API SOAP
 
