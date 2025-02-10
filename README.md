@@ -137,7 +137,7 @@ Authorization: Bearer <token-jwt>
 
 Así, el filtro detectará que tiene ese token de autorización, lo comprobará y si es correcto, permitira que se vean los enpoints securizados.
 
-Todos los endpoints securizados piden que se esté autenticado y sean o USER o ADMIN.
+Todos los endpoints securizados piden que se esté autenticado y sean o `USER` o `ADMIN`.
 
 ## Introducción API SOAP
 

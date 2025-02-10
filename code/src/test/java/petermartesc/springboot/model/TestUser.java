@@ -37,8 +37,8 @@ public class TestUser extends Utilities {
     @Test
     public void equalsTest(){
         User equals = new User(ID, NAME, ROLE);
-        User differentRole = new User(NAME, ROLE);
-        User completelyDifferent = new User(NAME, ROLE);
+        User differentRole = new User(NAME, PASSWORD, ROLE);
+        User completelyDifferent = new User(NAME, PASSWORD, ROLE);
         String str = "str";
         User nullObject = null;
 

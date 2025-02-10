@@ -43,8 +43,8 @@ public class TestUserControllerV1 extends Utilities {
         Role rolAdmin = new Role(1, "Admin");
         Role rolUser = new Role(2, "User");
 
-        list.add(new User("Manuel", rolUser ));
-        list.add(new User("Pedro", rolAdmin ));
+        list.add(new User("Manuel", PASSWORD, rolUser ));
+        list.add(new User("Pedro", PASSWORD, rolAdmin ));
         when(mockUserService.getAllUsers()).thenReturn(list);
         Assertions.assertNotNull(controller.getAllUsers(), NOT_EXPECTED_RESULT);
     }
@@ -54,10 +54,10 @@ public class TestUserControllerV1 extends Utilities {
         Role rolAdmin = new Role(1, "Admin");
         Role rolUser = new Role(2, "User");
         List<User> list = new ArrayList<>();
-        list.add(new User("Manuel", rolUser ));
-        list.add(new User("Pedro", rolAdmin ));
+        list.add(new User("Manuel", PASSWORD, rolUser ));
+        list.add(new User("Pedro", PASSWORD, rolAdmin ));
 
-        when(mockUserService.getUserById(1)).thenReturn(new User("Manuel", rolUser));
+        when(mockUserService.getUserById(1)).thenReturn(new User("Manuel", PASSWORD, rolUser));
         Assertions.assertNotNull(controller.getUserById(1), NOT_EXPECTED_RESULT);
     }
 

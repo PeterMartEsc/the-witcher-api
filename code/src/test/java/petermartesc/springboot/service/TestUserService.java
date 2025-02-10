@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import petermartesc.springboot.dto.user.UserDtoAuth;
+import petermartesc.springboot.dto.user.UserDtoOutV1;
 import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Role;
 import petermartesc.springboot.model.User;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.*;
@@ -47,8 +50,8 @@ public class TestUserService extends Utilities {
     @Test
     void getAllTest() {
         List<User> list = new ArrayList<>();
-        list.add(new User(NAME, ROLE));
-        list.add(new User(NAME, ROLE));
+        list.add(new User(NAME, PASSWORD, ROLE));
+        list.add(new User(NAME, PASSWORD, ROLE));
         when(repositoryUserMock.findAll()).thenReturn(list);
         Assertions.assertNotNull(userService.getAllUsers(), NOT_EXPECTED_RESULT);
     }
@@ -56,11 +59,22 @@ public class TestUserService extends Utilities {
 
     @Test
     void getOneTest() throws ResourceNotFoundException {
-        when(repositoryUserMock.findById(1)).thenReturn(Optional.of(new User()));
-        Assertions.assertNotNull(userService.getUserById(1), NOT_EXPECTED_RESULT);
+        UserDtoOutV1 outDto = new UserDtoOutV1(0, NAME, PASSWORD, ID);
+        when(repositoryUserMock.findById(1)).thenReturn(Optional.of(USER));
+
+        User usuarioObtenido = userService.getUserById(1);
+
+        UserDtoOutV1 dtoObtenido = new UserDtoOutV1(usuarioObtenido.getId(), usuarioObtenido.getName(),
+                usuarioObtenido.getPassword(), usuarioObtenido.getRole().getId());
+
+        Assertions.assertEquals(dtoObtenido.id(), usuarioObtenido.getId(), NOT_EXPECTED_RESULT);
+        Assertions.assertEquals(dtoObtenido.name(), usuarioObtenido.getName(), NOT_EXPECTED_RESULT);
+        Assertions.assertEquals(dtoObtenido.password(), usuarioObtenido.getPassword(), NOT_EXPECTED_RESULT);
+        Assertions.assertEquals(dtoObtenido.role(), usuarioObtenido.getRole().getId(), NOT_EXPECTED_RESULT);
+
+
+        Assertions.assertEquals(outDto, dtoObtenido, NOT_EXPECTED_RESULT);
     }
-
-
 
     @Test
     void updateTest() throws ResourceNotFoundException {
@@ -87,6 +101,5 @@ public class TestUserService extends Utilities {
         doNothing().when(repositoryUserMock).delete(isA(User.class));
         userService.deleteUser(1);
         verify(repositoryUserMock, times(1)).delete(USER);
-
     }
 }

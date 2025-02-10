@@ -19,5 +19,5 @@ public class Utilities {
 
 
     public static final Role ROLE = new Role(1, "ROLE_ADMIN");
-    public static final User USER = new User(NAME, ROLE);
+    public static final User USER = new User(NAME, PASSWORD,ROLE);
 }
