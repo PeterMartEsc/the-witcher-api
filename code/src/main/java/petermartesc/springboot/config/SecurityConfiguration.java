@@ -42,7 +42,9 @@ public class SecurityConfiguration {
 					"/configuration/**", "/swagger*/**",
 
 					"/v2/**", "/v3/**", "/webjars/**",
-					"/websocket*/**", "/api/auth/**"
+					"/websocket*/**", "/api/auth/**",
+					"/services/**"
+
 					).permitAll()
 						//.requestMatchers("/api/v2/alumnos").hasAnyRole("USER", "ADMIN")
 					//.requestMatchers("/api/v2/**").hasAnyRole("USER", "ADMIN")

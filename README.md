@@ -4,9 +4,9 @@
 
 __Autor:__ _Pedro Martín Escuela_
 
-Este repositorio implementa una API RESTfull usando Java y Spring-Boot, siguiendo el [proyecto subido por el profesor](). Las tablas con la iformación toman como base contenido del videojuego The Witcher.
-
 <img src="https://assets.nintendo.com/image/upload/q_auto/f_auto/ncom/software/switch/70010000033071/3f7ee6aa3482b514bd443e116022b038a9728f017916ed37da3f09f731a7d5f2"/>
+
+Este repositorio implementa una __API RESTfull__ y otra __SOAP__ usando __Java y Spring-Boot__, siguiendo el [proyecto subido por el profesor](https://github.com/jpexposito/spring-boot-persistence-h2). La temátia de las tablas con información es del videojuego _The Witcher_.
 
 ## Índice:
 
@@ -14,7 +14,7 @@ Este repositorio implementa una API RESTfull usando Java y Spring-Boot, siguiend
     - [Introducción](#introducción)
     - [Intrucciones para el funcionamiento](#instrucciones-para-el-funcionamiento)
     - [Endpoints](#endpoints)
-    - [Securización]()
+    - [Securización](#securización)
 
 - API SOAP
     - [Introducción API SOAP](#introducción-api-soap)
@@ -40,29 +40,17 @@ Para arrancar el codigo, hay que ejecutar:
 
 - URL: http://localhost:8080/swagger-ui/index.html
 
-### Para comprobar la bbdd que se crea
+### Para comprobar la Base de Datos
 
-- URL: http://localhost:8080/h2-console/
+La BBDD está creada dentro de [resources](./code/src/main/resources/) a partir de un .sql que se encuentra en la misma [carpeta](./code/src/main/resources/back/) que el __backup__.
 
-- `Username`: root
-- `Password`: 
+El __gestor__ de la __Base de Datos__ es Sqlite. Se puede acceder a ella mediante el comando:
 
-> Hay que usar las credenciales establecidas en el properties y usadas en la propia BBDD en la que trabaja la __api__
-
-Dentro, para visualizar las tablas especificas creadas, se tendrán que ejecutar las sentencias sql especificas.
-
-Para mostrar las tablas creadas al lanzar la api:
-
-```sql
-    USE the_witcher_api;
-    SHOW tables;
+```code
+sqlite3 <nombre-bbdd>
 ```
 
-Para mostrar el contenido de una tabla específica:
-
-```sql
-    SELECT * FROM <nombre-tabla>;
-```
+situancose en la terminal, en el mismo directorio donde se encuentra. Ahí se verán reflejados los cambios que se realicen a través de los __endpoints__.
 
 ## Endpoints API RESTFull
 
