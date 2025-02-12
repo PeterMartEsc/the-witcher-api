@@ -23,8 +23,8 @@ public interface IAlchemyServiceSoap {
     @WebMethod
     boolean createAlchemy(@WebParam(name = "alchemy") Alchemy alchemy);
     @WebMethod
-    boolean updateAlchemy(@WebParam(name = "alchemy") Alchemy alchemy, @WebParam(name = "alchemyId") int alchemyId);
+    boolean updateAlchemy(@WebParam(name = "alchemy") Alchemy alchemy, @WebParam(name = "alchemyId") int alchemyId) throws ResourceNotFoundException;
 
     @WebMethod
-    boolean deleteAlchemyById(@WebParam(name = "alchemyId") int alchemyId);
+    boolean deleteAlchemyById(@WebParam(name = "alchemyId") int alchemyId) throws ResourceNotFoundException;
 }

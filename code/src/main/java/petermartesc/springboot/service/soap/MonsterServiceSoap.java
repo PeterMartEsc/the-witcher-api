@@ -24,12 +24,8 @@ public class MonsterServiceSoap implements IMonsterServiceSoap {
     }
 
     @Override
-    public Monster getMonsterById(int monsterId) {
-        try {
-            return monsterService.getMonsterById(monsterId);
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error obteniendo el monstruo", e);
-        }
+    public Monster getMonsterById(int monsterId) throws ResourceNotFoundException {
+        return monsterService.getMonsterById(monsterId);
     }
 
     @Override
@@ -42,25 +38,14 @@ public class MonsterServiceSoap implements IMonsterServiceSoap {
     }
 
     @Override
-    public boolean updateMonster(Monster monster, int monsterId) {
-        try {
-            monsterService.updateMonster(monsterId, monster);
-
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error al actualizar el monstruo", e);
-        }
-
+    public boolean updateMonster(Monster monster, int monsterId) throws ResourceNotFoundException {
+        monsterService.updateMonster(monsterId, monster);
         return true;
     }
 
     @Override
-    public boolean deleteMonsterById(int monsterId) {
-        try {
-            monsterService.deleteMonster(monsterId);
-            return true;
-        } catch (ResourceNotFoundException e) {
-            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
-            throw new WebServiceException("Error al eliminar el monstruo", e);
-        }
+    public boolean deleteMonsterById(int monsterId) throws ResourceNotFoundException {
+        monsterService.deleteMonster(monsterId);
+        return true;
     }
 }

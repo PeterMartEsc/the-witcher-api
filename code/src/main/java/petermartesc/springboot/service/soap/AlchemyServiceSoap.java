@@ -42,23 +42,14 @@ public class AlchemyServiceSoap implements IAlchemyServiceSoap {
     }
 
     @Override
-    public boolean updateAlchemy(Alchemy alchemy, int alchemyId) {
-        try {
-            alchemyService.updateAlchemy( alchemyId, alchemy);
-        } catch (ResourceNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
+    public boolean updateAlchemy(Alchemy alchemy, int alchemyId) throws ResourceNotFoundException {
+        alchemyService.updateAlchemy( alchemyId, alchemy);
         return true;
     }
 
     @Override
-    public boolean deleteAlchemyById(int alchemyId) {
-        try {
-            alchemyService.deleteAlchemy(alchemyId);
-        } catch (ResourceNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+    public boolean deleteAlchemyById(int alchemyId) throws ResourceNotFoundException {
+        alchemyService.deleteAlchemy(alchemyId);
         return true;
     }
 }

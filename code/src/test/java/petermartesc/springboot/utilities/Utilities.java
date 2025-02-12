@@ -1,8 +1,7 @@
 package petermartesc.springboot.utilities;
 
-import petermartesc.springboot.model.Alchemy;
-import petermartesc.springboot.model.Role;
-import petermartesc.springboot.model.User;
+import petermartesc.springboot.model.*;
+import petermartesc.springboot.model.Character;
 
 public class Utilities {
     public final String NOT_EXPECTED_RESULT = "NO SE HA OBTENIDO EL RESULTADO ESPERADO";
@@ -20,7 +19,14 @@ public class Utilities {
 
 
     public static final Role ROLE = new Role(1, "ROLE_ADMIN");
+
     public static final User USER = new User(NAME, PASSWORD,ROLE);
 
     public static final Alchemy ALCHEMY = new Alchemy(3, NAME, MATERIAL);
+    public static final Character CHARACTER = new Character(3, NAME, SURNAME, DESCRIPTION);
+    public static final Location LOCATION = new Location(3, NAME, KINGDOM);
+
+    public static final Monster MONSTER = new Monster(3, NAME, DIFFICULTY);
+
+    public static final Weapon WEAPON = new Weapon(3, NAME, RARITY);
 }

@@ -4,6 +4,7 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
+import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Role;
 
 import java.util.List;
@@ -16,13 +17,13 @@ public interface IRoleServiceSoap {
     List<Role> getAllRoles();
 
     @WebMethod
-    Role getRoleById(@WebParam(name = "roleId") int roleId);
+    Role getRoleById(@WebParam(name = "roleId") int roleId) throws ResourceNotFoundException;
 
     @WebMethod
     boolean createRole(@WebParam(name = "role") Role role);
     @WebMethod
-    boolean updateRole(@WebParam(name = "role") Role role, @WebParam(name = "roleId") int roleId);
+    boolean updateRole(@WebParam(name = "role") Role role, @WebParam(name = "roleId") int roleId) throws ResourceNotFoundException;
 
     @WebMethod
-    boolean deleteRoleById(@WebParam(name = "roleId") int roleId);
+    boolean deleteRoleById(@WebParam(name = "roleId") int roleId) throws ResourceNotFoundException;
 }

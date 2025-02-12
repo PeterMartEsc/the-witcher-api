@@ -24,12 +24,8 @@ public class WeaponServiceSoap implements IWeaponServiceSoap {
     }
 
     @Override
-    public Weapon getWeaponById(int weaponId) {
-        try {
-            return weaponService.getWeaponById(weaponId);
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error obteniendo el arma", e);
-        }
+    public Weapon getWeaponById(int weaponId) throws ResourceNotFoundException {
+        return weaponService.getWeaponById(weaponId);
     }
 
     @Override
@@ -42,25 +38,14 @@ public class WeaponServiceSoap implements IWeaponServiceSoap {
     }
 
     @Override
-    public boolean updateWeapon(Weapon weapon, int weaponId) {
-        try {
-            weaponService.updateWeapon(weaponId, weapon);
-
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error al actualizar el arma", e);
-        }
-
+    public boolean updateWeapon(Weapon weapon, int weaponId) throws ResourceNotFoundException {
+        weaponService.updateWeapon(weaponId, weapon);
         return true;
     }
 
     @Override
-    public boolean deleteWeaponById(int weaponId) {
-        try {
-            weaponService.deleteWeapon(weaponId);
-            return true;
-        } catch (ResourceNotFoundException e) {
-            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
-            throw new WebServiceException("Error al eliminar el arma", e);
-        }
+    public boolean deleteWeaponById(int weaponId) throws ResourceNotFoundException {
+        weaponService.deleteWeapon(weaponId);
+        return true;
     }
 }

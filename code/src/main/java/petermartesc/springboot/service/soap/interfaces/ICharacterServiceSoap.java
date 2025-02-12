@@ -4,6 +4,7 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
+import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Character;
 
 import java.util.List;
@@ -17,13 +18,13 @@ public interface ICharacterServiceSoap {
     List<Character> getAllCharacters();
 
     @WebMethod
-    Character getCharacterById(@WebParam(name = "characterId") int characterId);
+    Character getCharacterById(@WebParam(name = "characterId") int characterId) throws ResourceNotFoundException;
 
     @WebMethod
     boolean createCharacter(@WebParam(name = "character") Character character);
     @WebMethod
-    boolean updateCharacter(@WebParam(name = "character") Character character, @WebParam(name = "characterId") int characterId);
+    boolean updateCharacter(@WebParam(name = "character") Character character, @WebParam(name = "characterId") int characterId) throws ResourceNotFoundException;
 
     @WebMethod
-    boolean deleteCharacterById(@WebParam(name = "characterId") int characterId);
+    boolean deleteCharacterById(@WebParam(name = "characterId") int characterId) throws ResourceNotFoundException;
 }

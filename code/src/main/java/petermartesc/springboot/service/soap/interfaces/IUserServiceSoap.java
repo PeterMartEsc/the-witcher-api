@@ -17,13 +17,13 @@ public interface IUserServiceSoap {
     List<User> getAllUsers();
 
     @WebMethod
-    User getUserById(@WebParam(name = "userId") int userId);
+    User getUserById(@WebParam(name = "userId") int userId) throws ResourceNotFoundException;
 
     @WebMethod
     boolean createUser(@WebParam(name = "user") User user) throws ResourceNotFoundException;
     @WebMethod
-    boolean updateUser(@WebParam(name = "user") User user, @WebParam(name = "userId") int userId);
+    boolean updateUser(@WebParam(name = "user") User user, @WebParam(name = "userId") int userId) throws ResourceNotFoundException;
 
     @WebMethod
-    boolean deleteUserById(@WebParam(name = "userId") int userId);
+    boolean deleteUserById(@WebParam(name = "userId") int userId) throws ResourceNotFoundException;
 }

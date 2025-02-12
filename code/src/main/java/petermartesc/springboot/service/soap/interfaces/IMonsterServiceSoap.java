@@ -4,6 +4,7 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
+import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Monster;
 
 import java.util.List;
@@ -17,13 +18,13 @@ public interface IMonsterServiceSoap {
     List<Monster> getAllMonsters();
 
     @WebMethod
-    Monster getMonsterById(@WebParam(name = "monsterId") int monsterId);
+    Monster getMonsterById(@WebParam(name = "monsterId") int monsterId) throws ResourceNotFoundException;
 
     @WebMethod
     boolean createMonster(@WebParam(name = "monster") Monster monster);
     @WebMethod
-    boolean updateMonster(@WebParam(name = "monster") Monster monster, @WebParam(name = "monsterId") int monsterId);
+    boolean updateMonster(@WebParam(name = "monster") Monster monster, @WebParam(name = "monsterId") int monsterId) throws ResourceNotFoundException;
 
     @WebMethod
-    boolean deleteMonsterById(@WebParam(name = "monsterId") int monsterId);
+    boolean deleteMonsterById(@WebParam(name = "monsterId") int monsterId) throws ResourceNotFoundException;
 }

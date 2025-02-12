@@ -4,6 +4,7 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebResult;
 import jakarta.jws.WebService;
+import petermartesc.springboot.exception.ResourceNotFoundException;
 import petermartesc.springboot.model.Location;
 
 import java.util.List;
@@ -17,13 +18,13 @@ public interface ILocationServiceSoap {
     List<Location> getAllLocations();
 
     @WebMethod
-    Location getLocationById(@WebParam(name = "locationId") int locationId);
+    Location getLocationById(@WebParam(name = "locationId") int locationId) throws ResourceNotFoundException;
 
     @WebMethod
     boolean createLocation(@WebParam(name = "location") Location location);
     @WebMethod
-    boolean updateLocation(@WebParam(name = "location") Location location, @WebParam(name = "locationId") int locationId);
+    boolean updateLocation(@WebParam(name = "location") Location location, @WebParam(name = "locationId") int locationId) throws ResourceNotFoundException;
 
     @WebMethod
-    boolean deleteLocationById(@WebParam(name = "locationId") int locationId);
+    boolean deleteLocationById(@WebParam(name = "locationId") int locationId) throws ResourceNotFoundException;
 }

@@ -24,13 +24,8 @@ public class CharacterServiceSoap implements ICharacterServiceSoap {
     }
 
     @Override
-    public Character getCharacterById(int characterId) {
-        try {
-            return characterService.getCharacterById(characterId);
-        } catch (ResourceNotFoundException e) {
-            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
-            throw new WebServiceException("Error obteniendo el usuario", e);
-        }
+    public Character getCharacterById(int characterId) throws ResourceNotFoundException {
+        return characterService.getCharacterById(characterId);
     }
 
     @Override
@@ -43,26 +38,16 @@ public class CharacterServiceSoap implements ICharacterServiceSoap {
     }
 
     @Override
-    public boolean updateCharacter(Character character, int characterId) {
-        try {
-
-            characterService.updateCharacter(characterId, character);
-
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error al actualizar el usuario", e);
-        }
-
+    public boolean updateCharacter(Character character, int characterId) throws ResourceNotFoundException {
+        characterService.updateCharacter(characterId, character);
         return true;
     }
 
     @Override
-    public boolean deleteCharacterById(int characterId) {
-        try {
-            characterService.deleteCharacter(characterId);
-            return true;
-        } catch (ResourceNotFoundException e) {
-            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
-            throw new WebServiceException("Error eliminar el usuario", e);
-        }
+    public boolean deleteCharacterById(int characterId) throws ResourceNotFoundException {
+
+        characterService.deleteCharacter(characterId);
+        return true;
+
     }
 }

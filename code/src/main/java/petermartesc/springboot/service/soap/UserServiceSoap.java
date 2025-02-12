@@ -24,13 +24,8 @@ public class UserServiceSoap implements IUserServiceSoap {
     }
 
     @Override
-    public User getUserById(int userId) {
-        try {
-            return userService.getUserById(userId);
-        } catch (ResourceNotFoundException e) {
-            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
-            throw new WebServiceException("Error obteniendo el usuario", e);
-        }
+    public User getUserById(int userId) throws ResourceNotFoundException {
+        return userService.getUserById(userId);
     }
 
     @Override
@@ -43,28 +38,14 @@ public class UserServiceSoap implements IUserServiceSoap {
     }
 
     @Override
-    public boolean updateUser(User user, int userId) {
-        try {
-            /**User userToUpdate = userService.getUserById(userId);
-            userToUpdate.setName(user.getName());
-            userToUpdate.setIdrole(user.getIdrole());**/
-            userService.updateUser(userId, user);
-
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error al actualizar el usuario", e);
-        }
-
+    public boolean updateUser(User user, int userId) throws ResourceNotFoundException {
+        userService.updateUser(userId, user);
         return true;
     }
 
     @Override
-    public boolean deleteUserById(int userId) {
-        try {
-            userService.deleteUser(userId);
-            return true;
-        } catch (ResourceNotFoundException e) {
-            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
-            throw new WebServiceException("Error eliminar el usuario", e);
-        }
+    public boolean deleteUserById(int userId) throws ResourceNotFoundException {
+        userService.deleteUser(userId);
+        return true;
     }
 }

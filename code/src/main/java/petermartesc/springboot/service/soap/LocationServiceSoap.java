@@ -24,12 +24,8 @@ public class LocationServiceSoap implements ILocationServiceSoap {
     }
 
     @Override
-    public Location getLocationById(int locationId) {
-        try {
-            return locationService.getLocationById(locationId);
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error obteniendo la localizacion", e);
-        }
+    public Location getLocationById(int locationId) throws ResourceNotFoundException {
+        return locationService.getLocationById(locationId);
     }
 
     @Override
@@ -42,27 +38,14 @@ public class LocationServiceSoap implements ILocationServiceSoap {
     }
 
     @Override
-    public boolean updateLocation(Location location, int locationId) {
-        try {
-            /**Location locationToUpdate = locationService.getLocationById(locationId);
-             locationToUpdate.setLocationName(location.getLocationName());**/
-            locationService.updateLocation(locationId, location);
-
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error al actualizar la localizacion", e);
-        }
-
+    public boolean updateLocation(Location location, int locationId) throws ResourceNotFoundException {
+        locationService.updateLocation(locationId, location);
         return true;
     }
 
     @Override
-    public boolean deleteLocationById(int locationId) {
-        try {
-            locationService.deleteLocation(locationId);
-            return true;
-        } catch (ResourceNotFoundException e) {
-            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
-            throw new WebServiceException("Error al eliminar la localizacion", e);
-        }
+    public boolean deleteLocationById(int locationId) throws ResourceNotFoundException {
+        locationService.deleteLocation(locationId);
+        return true;
     }
 }

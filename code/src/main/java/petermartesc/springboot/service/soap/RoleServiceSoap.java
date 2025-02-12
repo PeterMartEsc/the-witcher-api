@@ -24,12 +24,8 @@ public class RoleServiceSoap implements IRoleServiceSoap {
     }
 
     @Override
-    public Role getRoleById(int roleId) {
-        try {
-            return roleService.getRoleById(roleId);
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error obteniendo el rol", e);
-        }
+    public Role getRoleById(int roleId) throws ResourceNotFoundException {
+        return roleService.getRoleById(roleId);
     }
 
     @Override
@@ -42,25 +38,14 @@ public class RoleServiceSoap implements IRoleServiceSoap {
     }
 
     @Override
-    public boolean updateRole(Role role, int roleId) {
-        try {
-            roleService.updateRole(roleId, role);
-
-        } catch (ResourceNotFoundException e) {
-            throw new WebServiceException("Error al actualizar el rol", e);
-        }
-
+    public boolean updateRole(Role role, int roleId) throws ResourceNotFoundException {
+        roleService.updateRole(roleId, role);
         return true;
     }
 
     @Override
-    public boolean deleteRoleById(int roleId) {
-        try {
-            roleService.deleteRole(roleId);
-            return true;
-        } catch (ResourceNotFoundException e) {
-            //Devuelve un error al obtener para no dar más información, no se especifica si existe o no
-            throw new WebServiceException("Error al eliminar el rol", e);
-        }
+    public boolean deleteRoleById(int roleId) throws ResourceNotFoundException {
+        roleService.deleteRole(roleId);
+        return true;
     }
 }
