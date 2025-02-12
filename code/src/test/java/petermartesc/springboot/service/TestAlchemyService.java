@@ -80,6 +80,5 @@ public class TestAlchemyService extends Utilities {
         doNothing().when(repositoryAlchemyMock).delete(isA(Alchemy.class));
         alchemyService.deleteAlchemy(1);
         verify(repositoryAlchemyMock, times(1)).delete(alchemy);
-
     }
 }

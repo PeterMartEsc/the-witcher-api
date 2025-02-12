@@ -1,5 +1,6 @@
 package petermartesc.springboot.utilities;
 
+import petermartesc.springboot.model.Alchemy;
 import petermartesc.springboot.model.Role;
 import petermartesc.springboot.model.User;
 
@@ -20,4 +21,6 @@ public class Utilities {
 
     public static final Role ROLE = new Role(1, "ROLE_ADMIN");
     public static final User USER = new User(NAME, PASSWORD,ROLE);
+
+    public static final Alchemy ALCHEMY = new Alchemy(3, NAME, MATERIAL);
 }
