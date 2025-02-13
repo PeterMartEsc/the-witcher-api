@@ -10,6 +10,9 @@
     <jaxws:endpoint id="userServiceEndpoint"
                     implementor="#userServiceSoap"
                     address="/users">
+        <jaxws:inInterceptors>
+            <ref bean="cxfAuthInterceptor"/>
+        </jaxws:inInterceptors>
     </jaxws:endpoint>
 
     <!-- Bean del servicio implementado -->
@@ -19,6 +22,9 @@
     <jaxws:endpoint id="roleServiceEndpoint"
                     implementor="#roleServiceSoap"
                     address="/roles">
+        <jaxws:inInterceptors>
+            <ref bean="cxfAuthInterceptor"/>
+        </jaxws:inInterceptors>
     </jaxws:endpoint>
 
     <!-- Bean del servicio implementado -->
@@ -28,6 +34,9 @@
     <jaxws:endpoint id="alchemyServiceEndpoint"
                     implementor="#alchemyServiceSoap"
                     address="/alchemys">
+        <jaxws:inInterceptors>
+            <ref bean="cxfAuthInterceptor"/>
+        </jaxws:inInterceptors>
     </jaxws:endpoint>
 
     <!-- Bean del servicio implementado -->
@@ -37,6 +46,9 @@
     <jaxws:endpoint id="characterServiceEndpoint"
                     implementor="#characterServiceSoap"
                     address="/characters">
+        <jaxws:inInterceptors>
+            <ref bean="cxfAuthInterceptor"/>
+        </jaxws:inInterceptors>
     </jaxws:endpoint>
 
     <!-- Bean del servicio implementado -->
@@ -46,6 +58,9 @@
     <jaxws:endpoint id="locationServiceEndpoint"
                     implementor="#locationServiceSoap"
                     address="/locations">
+        <jaxws:inInterceptors>
+            <ref bean="cxfAuthInterceptor"/>
+        </jaxws:inInterceptors>
     </jaxws:endpoint>
 
     <!-- Bean del servicio implementado -->
@@ -55,6 +70,9 @@
     <jaxws:endpoint id="monsterServiceEndpoint"
                     implementor="#monsterServiceSoap"
                     address="/monsters">
+        <jaxws:inInterceptors>
+            <ref bean="cxfAuthInterceptor"/>
+        </jaxws:inInterceptors>
     </jaxws:endpoint>
 
     <!-- Bean del servicio implementado -->
@@ -64,9 +82,15 @@
     <jaxws:endpoint id="weaponServiceEndpoint"
                     implementor="#weaponServiceSoap"
                     address="/weapons">
+        <jaxws:inInterceptors>
+            <ref bean="cxfAuthInterceptor"/>
+        </jaxws:inInterceptors>
     </jaxws:endpoint>
 
     <!-- Bean del servicio implementado -->
     <bean id="weaponServiceSoap" class="petermartesc.springboot.service.soap.WeaponServiceSoap"/>
+
+    <!-- Bean del cxf Auth Interceptor (securizar soap) -->
+    <bean id="cxfAuthInterceptor" class="petermartesc.springboot.security.interceptor.CxfAuthInterceptor"/>
 
 </beans>
